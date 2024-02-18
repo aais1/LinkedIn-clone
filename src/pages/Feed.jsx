@@ -14,7 +14,7 @@ const Feed = () => {
       </div>
 
       <div className='flex-1 space-y-6 ' >
-        <div className=' bg-white rounded-lg  space-y-2 p-2'>
+        <div className=' bg-white rounded-lg shadow-xl  space-y-2 p-2'>
         <div className='flex gap-x-4'>
           <Avatar width={50}/>
           <input type="text"
