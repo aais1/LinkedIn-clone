@@ -1,6 +1,8 @@
 import {useState} from 'react'
 import {Link} from 'react-router-dom';
 import logo from '/logo.png';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import {auth} from '../firebase';
 
 
 const Register = () => {
@@ -9,13 +11,37 @@ const Register = () => {
     const [password, setPassword] = useState('');
     const [cnfrmPassword, setCnfrmPassword] = useState('');
     const [username, setUsername] = useState('');
+    const [feedback,setFeedback]=useState('')
 
-    const handleRegister = () => {
+    const handleRegister = (e) => {
+        e.preventDefault();
+        let allow=false;
+        e.preventDefault();
+        if (email.length === 0 || password.length === 0 || cnfrmPassword.length === 0) {
+          setFeedback('Please fill all the fields');
+        } else if (password.length < 6) {
+          setFeedback('Password should be at least 6 characters long');
+        } else if (password !== cnfrmPassword) {
+          setFeedback('Password does not match');
+        } else{
+          setFeedback('');
+          allow=true;
+        }
+        if(allow){
+            createUserWithEmailAndPassword(auth,email,password)
+            .then((userCredential) => {
+                console.log(userCredential.user);
+            })
+            .catch((error)=>{
+                setFeedback(error.message)
+            })
 
+        }
     }
 
   return (
     <div>
+        <form onSubmit={handleRegister}>
         <div className='min-h-[100vh] flex flex-col justify-center items-center '>
             <div className='p-6 shadow-lg'>
             <div className='flex items-center justify-center gap-x-2 mb-8'>
@@ -56,11 +82,13 @@ const Register = () => {
                  value={cnfrmPassword} />
 
                  <button className='border px-4 py-2 hover:bg-blue-500 text-blue-500 hover:text-white duration-300'
-                 onClick={handleRegister}>Register</button>
+                 type='submit'>Register</button>
                  <Link to="/login"><p className='hover:underline text-blue-500 cursor-pointer text-xs'>Already have an account ? Login Here</p></Link>
+                 <span className='text-xs text-red-500 font-bold'>{feedback}</span>
             </div>
             </div>
         </div>
+        </form>
     </div>
   )
 }
