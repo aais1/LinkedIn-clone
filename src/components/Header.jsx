@@ -8,18 +8,26 @@ import { IoChatbubbleEllipses } from "react-icons/io5";
 import { FaBell } from "react-icons/fa6";
 import Avatar from './Avatar';
 import { FaCaretDown } from "react-icons/fa";
+import {Link ,useLocation } from 'react-router-dom';
 
 const Header = () => {
+
+  const location=useLocation();
+  const restrictedRoutes=['/login','/register'];
+  const notAllowedRoutes=restrictedRoutes.some((loc)=>
+  location.pathname.includes(loc));
   return (
     <>
-    <div className='sticky top-0 bg-white z-50 border-b'>
+    { !notAllowedRoutes ? <div className='sticky top-0 bg-white z-50 border-b'>
     <div className='w-[80vw] mx-auto'>
         <div className='py-2 flex justify-between gap-x-2'>
             <div className='flex h-[40px] items-center'>
+              <Link to="/feed">
             <img src="logo.png"
              alt="logo"
              width={38}
               />
+              </Link>
              <div className='flex items-center bg-slate-100 gap-x-2 px-4 rounded-md group text-black
              focus:outline-black h-[35px] w-[320px]'>
              <HiMagnifyingGlass style={{fontSize:'1.2rem'}} />
@@ -47,7 +55,7 @@ const Header = () => {
              </div>
         </div>
     </div>
-</div>
+</div> : ''}
     </>
   )
 }
