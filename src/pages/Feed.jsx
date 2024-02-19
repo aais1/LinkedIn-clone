@@ -9,12 +9,12 @@ import {
 import { useSelector } from "react-redux";
 import { db } from '../firebase'
 import { getDocs , collection , onSnapshot } from "firebase/firestore"; 
+import Login from './Login'
 
 const Feed = () => {
   const user = useSelector((state) => state.auth.user);
-  
+  console.log(user);
   const [posts,setPosts]=useState([]);
-
 //   useEffect(() => {
 //   db.collection("posts").onSnapshot((snapshot) => {
 //     setPosts(
@@ -48,28 +48,33 @@ useEffect(() => {
 }, []);
 
   return (
-    <div className="bg-zinc-50 pt-6">
-      <div className="w-[80vw] mx-auto flex gap-x-6">
-        <div className="flex-none ">
-          <LeftSideBar />
-          <Discover />
-        </div>
+<>
+      { user ? (
+        <div className="bg-zinc-50 pt-6">
+          <div className="w-[80vw] mx-auto flex gap-x-6">
+            <div className="flex-none ">
+              <LeftSideBar />
+              <Discover />
+            </div>
 
-        <div className="flex-1 space-y-6 ">
-          <InputField/>
-          <hr />
+            <div className="flex-1 space-y-6 ">
+              <InputField />
+              <hr />
 
-          {
-          posts && posts.map(({ id, data: {  content, author } }) => (
-            <Post key={id} content={content} {...author} />
-          ))
-          }
+              {posts &&
+                posts.map(({ id, data: { content, name, profileURL, email, timestamp } }) => (
+                  <Post key={id} content={content} name={name} profileURL={profileURL} email={email} timestamp={timestamp} />
+                ))}
+            </div>
+            <div className="flex-none">
+              <RightSideBar />
+            </div>
+          </div>
         </div>
-        <div className="flex-none">
-          <RightSideBar />
-        </div>
-      </div>
-    </div>
+      ) : (
+        <Login />
+      )}
+    </>
   );
 };
 

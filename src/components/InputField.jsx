@@ -11,20 +11,20 @@ import { useState , useRef } from "react";
 const InputField = () => {
     const user = useSelector(state => state.auth.user);
   
-    const [post, setPost] = useState();
+    const [post, setPost] = useState('');
     const inputRef=useRef();
 
     const addPost = async (e) => {
         e.preventDefault();
+        if(post.length>1){
         try {
+            inputRef.current.placeholder="Start a Post";
             const docRef = await addDoc(collection(db, "posts"), {
                 content: post,
-                author:{
-                  name:user.displayName,
-                  profileURL:user.photoURL,
-                  email:user.email,
-                  createdAt: serverTimestamp()
-                }
+                name:user?.displayName,
+                profileURL:user?.photoURL,
+                email:user?.email,
+                timestamp:serverTimestamp()
             });
             console.log("Document written with ID: ", docRef.id);
             setPost('');
@@ -32,6 +32,10 @@ const InputField = () => {
         } catch (e) {
             console.error("Error adding document: ", e);
             inputRef.current.style.borderColor = "red"
+        }}
+        else{
+          inputRef.current.placeholder="Enter Some text first"
+          console.log('err');
         }
     }
 
@@ -39,7 +43,7 @@ const InputField = () => {
         <div className="bg-white rounded-lg shadow-xl space-y-2 p-2">
             <form onSubmit={addPost}>
                 <div className="flex gap-x-4">
-                    <Avatar url={user.photoURL} width={50} />
+                    <Avatar url={user?.photoURL} width={50} />
                     <input
                         type="text"
                         className="flex-1 rounded-full px-4 border border-gray-500  outline-none focus:border-2 focus:border-black"
