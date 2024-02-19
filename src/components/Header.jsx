@@ -9,6 +9,7 @@ import { FaBell } from "react-icons/fa6";
 import Avatar from './Avatar';
 import { FaCaretDown } from "react-icons/fa";
 import {Link ,useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
 
@@ -16,6 +17,8 @@ const Header = () => {
   const restrictedRoutes=['/login','/register'];
   const notAllowedRoutes=restrictedRoutes.some((loc)=>
   location.pathname.includes(loc));
+  const user=useSelector(state=>state.auth.user);
+
   return (
     <>
     { !notAllowedRoutes ? <div className='sticky top-0 bg-white z-50 border-b'>
@@ -46,7 +49,7 @@ const Header = () => {
                 <HeaderItem Icon={FaBell} color="gray" title="Notifications"/>
                 
                 <div className='flex flex-col text-xs items-center'>
-                <Avatar width={24}/>
+                <Avatar url={user.photoURL} width={24}/>
                 <div className='flex'>
                 <p>Me</p>
                 <FaCaretDown style={{fontSize:'1rem',color:'gray'}}/>

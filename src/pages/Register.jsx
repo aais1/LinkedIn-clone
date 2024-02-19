@@ -3,6 +3,7 @@ import {Link} from 'react-router-dom';
 import logo from '/logo.png';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import {auth} from '../firebase';
+import { useDispatch } from 'react-redux';
 
 
 const Register = () => {
@@ -12,6 +13,7 @@ const Register = () => {
     const [cnfrmPassword, setCnfrmPassword] = useState('');
     const [username, setUsername] = useState('');
     const [feedback,setFeedback]=useState('')
+    const dispatch=useDispatch()
 
     const handleRegister = (e) => {
         e.preventDefault();
@@ -31,6 +33,7 @@ const Register = () => {
             createUserWithEmailAndPassword(auth,email,password)
             .then((userCredential) => {
                 console.log(userCredential.user);
+                dispatch(login({...userCredential.user,displayName:username}));
             })
             .catch((error)=>{
                 setFeedback(error.message)

@@ -3,8 +3,15 @@ import { LeftSideBar, RightSideBar, Discover ,Avatar , InputItem , Post} from '.
 import { IoImageOutline } from "react-icons/io5";
 import { SlCalender } from "react-icons/sl";
 import { RiPagesLine } from "react-icons/ri";
+import { useSelector } from 'react-redux'
+import { useEffect } from 'react';
 
 const Feed = () => {
+
+  const user = useSelector(state=>state.auth.user)
+  console.log(user.photoURl);
+
+  
   return (
     <div className='bg-zinc-50 pt-6'>
     <div className='w-[80vw] mx-auto flex gap-x-6'>
@@ -16,7 +23,7 @@ const Feed = () => {
       <div className='flex-1 space-y-6 ' >
         <div className=' bg-white rounded-lg shadow-xl  space-y-2 p-2'>
         <div className='flex gap-x-4'>
-          <Avatar width={50}/>
+          <Avatar url={user.photoURL} width={50}/>
           <input type="text"
            className='flex-1 rounded-full px-2 border border-gray-500'
            placeholder='Start a post'/>
@@ -29,7 +36,7 @@ const Feed = () => {
         </div>
         <hr />
 
-        <Post content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil soluta iste in velit quidem qui optio corporis voluptate id iure animi minima deserunt sequi delectus quaerat voluptatem, numquam culpa libero?"/>
+        <Post content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil soluta iste in velit quidem qui optio corporis voluptate id iure animi minima deserunt sequi delectus quaerat voluptatem, numquam culpa libero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil soluta iste in velit quidem qui optio corporis voluptate id iure animi minima deserunt sequi delectus quaerat voluptatem, numquam culpa libero?Loremasnukasfisdfbasdjhfbasjhvfjsh"/>
         
         <Post content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil soluta iste in velit quidem qui optio corporis voluptate id iure animi minima deserunt sequi delectus quaerat voluptatem, numquam culpa libero?"/>
         
@@ -37,7 +44,7 @@ const Feed = () => {
 
         <Post content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil soluta iste in velit quidem qui optio corporis voluptate id iure animi minima deserunt sequi delectus quaerat voluptatem, numquam culpa libero?"/>
 
-        <Post content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil soluta iste in velit quidem qui optio corporis voluptate id iure animi minima deserunt sequi delectus quaerat voluptatem, numquam culpa libero?"/>
+        <Post content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil soluta iste in velit quidem qui optio corporis voluptate id iure animi minima deserunt sequi delectus quaerat voluptatem, numquam culpa libero?Loremasnukasfisdfbasdjhfbasjhvfjsh"/>
       </div>
 
       <div className='flex-none'>
