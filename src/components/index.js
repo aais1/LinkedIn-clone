@@ -7,7 +7,8 @@ import Discover from "./Discover";
 import Post from "./Post";
 import InputItem from "./InputItem";
 import InputField from './InputField'
+import Loader from './Loader'
 
 
 
-export {Header,LeftSideBar,RightSideBar,Avatar,HeaderItem,Discover,Post,InputItem,InputField}
+export {Header,LeftSideBar,RightSideBar,Avatar,HeaderItem,Discover,Post,InputItem,InputField,Loader}

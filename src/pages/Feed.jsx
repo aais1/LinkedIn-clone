@@ -4,30 +4,27 @@ import {
   RightSideBar,
   Discover,
   Post,
-  InputField
+  InputField,
+  Loader
 } from "../components";
-import { useSelector } from "react-redux";
+import { useSelector ,useDispatch } from "react-redux";
 import { db } from '../firebase'
 import { getDocs , collection ,query, onSnapshot, orderBy } from "firebase/firestore"; 
 import Login from './Login'
+import {auth} from '../firebase'
+import { onAuthStateChanged } from "firebase/auth";
+import { login ,logout } from "../features/authSlice/authSlice";
 
 const Feed = () => {
   const user = useSelector((state) => state.auth.user);
+  const dispatch=useDispatch();
   
   const [posts,setPosts]=useState([]);
-//   useEffect(() => {
-//   db.collection("posts").onSnapshot((snapshot) => {
-//     setPosts(
-//       snapshot.docs.map((doc) => ({
-//         id: doc.id,
-//         data: doc.data(),
-//       }))
-//     );
-//   });
-// }, []);
+  const [loading,setLoading]=useState(false);
 
 
 useEffect(() => {
+  setLoading(true);
   const fetchData = async () => {
     try {
       const q = query(collection(db, "posts"), orderBy("timestamp", "desc"));
@@ -42,15 +39,27 @@ useEffect(() => {
       });
     } catch (error) {
       console.error("Error fetching posts:", error);
+    } finally{
+      setLoading(false);
     }
   };
-
   fetchData();
 }, []);
 
+useEffect(()=>{
+  setLoading(true);
+    onAuthStateChanged(auth,(user)=>{
+      if(user){
+        dispatch(login(user));      
+      }else{
+        dispatch(logout(user))
+      }
+      setLoading(false);
+    })
+},[])
+
   return (
 <>
-      { user ? (
         <div className="bg-zinc-50 pt-6">
           <div className="w-[80vw] mx-auto flex gap-x-6">
             <div className="flex-none ">
@@ -61,20 +70,19 @@ useEffect(() => {
             <div className="flex-1 space-y-6 ">
               <InputField />
               <hr />
-
-              {posts &&
-                posts.map(({ id, data: { content, name, profileURL, email, timestamp } }) => (
+              {!loading ? (
+                posts && posts.map(({ id, data: { content, name, profileURL, email, timestamp } }) => (
                   <Post key={id} content={content} name={name} profileURL={profileURL} email={email} timestamp={timestamp} />
-                ))}
+                ))
+              ) : (
+                <Loader/>
+              )}
             </div>
             <div className="flex-none">
               <RightSideBar />
             </div>
           </div>
         </div>
-      ) : (
-        <Login />
-      )}
     </>
   );
 };

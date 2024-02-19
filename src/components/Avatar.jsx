@@ -1,5 +1,3 @@
-import React from 'react'
-
 import dummyImg from '../assets/profileDummy.jpg'
 
 const Avatar = ({url,width}) => {

@@ -8,7 +8,7 @@ import { IoChatbubbleEllipses } from "react-icons/io5";
 import { FaBell } from "react-icons/fa6";
 import Avatar from "./Avatar";
 import { FaCaretDown } from "react-icons/fa";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import {auth} from '../firebase'
 
@@ -20,7 +20,7 @@ const Header = () => {
   );
   const user = useSelector((state) => state.auth.user);
   const [profileMenu, setProfileMenu] = React.useState(false);
-
+  const navigate=useNavigate();
   const showProfileMenu = () => {
     setProfileMenu(!profileMenu);
   }
@@ -28,6 +28,7 @@ const Header = () => {
   //todo handle signout
   const handleSignOut=()=>{
     auth.signOut();
+    navigate('/login');
   }
 
   return (
