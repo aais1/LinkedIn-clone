@@ -1,56 +1,74 @@
-import React from 'react';
-import { LeftSideBar, RightSideBar, Discover ,Avatar , InputItem , Post} from '../components';
-import { IoImageOutline } from "react-icons/io5";
-import { SlCalender } from "react-icons/sl";
-import { RiPagesLine } from "react-icons/ri";
-import { useSelector } from 'react-redux'
-import { useEffect } from 'react';
+import { useEffect, useState } from "react";
+import {
+  LeftSideBar,
+  RightSideBar,
+  Discover,
+  Post,
+  InputField
+} from "../components";
+import { useSelector } from "react-redux";
+import { db } from '../firebase'
+import { getDocs , collection , onSnapshot } from "firebase/firestore"; 
 
 const Feed = () => {
-
-  const user = useSelector(state=>state.auth.user)
-  console.log(user.photoURl);
-
+  const user = useSelector((state) => state.auth.user);
   
+  const [posts,setPosts]=useState([]);
+
+//   useEffect(() => {
+//   db.collection("posts").onSnapshot((snapshot) => {
+//     setPosts(
+//       snapshot.docs.map((doc) => ({
+//         id: doc.id,
+//         data: doc.data(),
+//       }))
+//     );
+//   });
+// }, []);
+
+
+useEffect(() => {
+  const fetchData = async () => {
+    try {
+      // Listen for changes using onSnapshot
+      onSnapshot(collection(db, "posts"), (snapshot) => {
+        setPosts(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            data: doc.data(),
+          }))
+        );
+      });
+    } catch (error) {
+      console.error("Error fetching posts:", error);
+    }
+  };
+
+  fetchData();
+}, []);
+
   return (
-    <div className='bg-zinc-50 pt-6'>
-    <div className='w-[80vw] mx-auto flex gap-x-6'>
-      <div className='flex-none '>
-        <LeftSideBar />
-        <Discover />
-      </div>
-
-      <div className='flex-1 space-y-6 ' >
-        <div className=' bg-white rounded-lg shadow-xl  space-y-2 p-2'>
-        <div className='flex gap-x-4'>
-          <Avatar url={user.photoURL} width={50}/>
-          <input type="text"
-           className='flex-1 rounded-full px-2 border border-gray-500'
-           placeholder='Start a post'/>
+    <div className="bg-zinc-50 pt-6">
+      <div className="w-[80vw] mx-auto flex gap-x-6">
+        <div className="flex-none ">
+          <LeftSideBar />
+          <Discover />
         </div>
-        <div className='flex space-x-2 items-center justify-evenly'>
-        <InputItem title="Media" Icon={IoImageOutline} color="steelblue"/>
-        <InputItem title="Event" Icon={SlCalender} color="brown"/>
-        <InputItem title="Write Article" Icon={RiPagesLine} color="red"/>
+
+        <div className="flex-1 space-y-6 ">
+          <InputField/>
+          <hr />
+
+          {
+          posts && posts.map(({ id, data: {  content, author } }) => (
+            <Post key={id} content={content} {...author} />
+          ))
+          }
         </div>
+        <div className="flex-none">
+          <RightSideBar />
         </div>
-        <hr />
-
-        <Post content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil soluta iste in velit quidem qui optio corporis voluptate id iure animi minima deserunt sequi delectus quaerat voluptatem, numquam culpa libero?Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil soluta iste in velit quidem qui optio corporis voluptate id iure animi minima deserunt sequi delectus quaerat voluptatem, numquam culpa libero?Loremasnukasfisdfbasdjhfbasjhvfjsh"/>
-        
-        <Post content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil soluta iste in velit quidem qui optio corporis voluptate id iure animi minima deserunt sequi delectus quaerat voluptatem, numquam culpa libero?"/>
-        
-        <Post content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil soluta iste in velit quidem qui optio corporis voluptate id iure animi minima deserunt sequi delectus quaerat voluptatem, numquam culpa libero?"/>
-
-        <Post content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil soluta iste in velit quidem qui optio corporis voluptate id iure animi minima deserunt sequi delectus quaerat voluptatem, numquam culpa libero?"/>
-
-        <Post content="Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil soluta iste in velit quidem qui optio corporis voluptate id iure animi minima deserunt sequi delectus quaerat voluptatem, numquam culpa libero?Loremasnukasfisdfbasdjhfbasjhvfjsh"/>
       </div>
-
-      <div className='flex-none'>
-        <RightSideBar />
-      </div>
-    </div>
     </div>
   );
 };

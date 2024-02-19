@@ -6,5 +6,8 @@ import HeaderItem from "./HeaderItem";
 import Discover from "./Discover";
 import Post from "./Post";
 import InputItem from "./InputItem";
+import InputField from './InputField'
 
-export {Header,LeftSideBar,RightSideBar,Avatar,HeaderItem,Discover,Post,InputItem}
+
+
+export {Header,LeftSideBar,RightSideBar,Avatar,HeaderItem,Discover,Post,InputItem,InputField}
