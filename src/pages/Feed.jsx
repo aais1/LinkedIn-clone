@@ -8,12 +8,12 @@ import {
 } from "../components";
 import { useSelector } from "react-redux";
 import { db } from '../firebase'
-import { getDocs , collection , onSnapshot } from "firebase/firestore"; 
+import { getDocs , collection ,query, onSnapshot, orderBy } from "firebase/firestore"; 
 import Login from './Login'
 
 const Feed = () => {
   const user = useSelector((state) => state.auth.user);
-  console.log(user);
+  
   const [posts,setPosts]=useState([]);
 //   useEffect(() => {
 //   db.collection("posts").onSnapshot((snapshot) => {
@@ -30,8 +30,9 @@ const Feed = () => {
 useEffect(() => {
   const fetchData = async () => {
     try {
-      // Listen for changes using onSnapshot
-      onSnapshot(collection(db, "posts"), (snapshot) => {
+      const q = query(collection(db, "posts"), orderBy("timestamp", "desc"));
+
+      onSnapshot(q, (snapshot) => {
         setPosts(
           snapshot.docs.map((doc) => ({
             id: doc.id,
