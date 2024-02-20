@@ -10,13 +10,13 @@ import {
 import { useSelector ,useDispatch } from "react-redux";
 import { db } from '../firebase'
 import { getDocs , collection ,query, onSnapshot, orderBy } from "firebase/firestore"; 
-import Login from './Login'
 import {auth} from '../firebase'
 import { onAuthStateChanged } from "firebase/auth";
-import { login ,logout } from "../features/authSlice/authSlice";
+import { login  } from "../features/authSlice/authSlice";
 
 const Feed = () => {
   const user = useSelector((state) => state.auth.user);
+  console.log(user);
   const dispatch=useDispatch();
   
   const [posts,setPosts]=useState([]);
@@ -50,9 +50,8 @@ useEffect(()=>{
   setLoading(true);
     onAuthStateChanged(auth,(user)=>{
       if(user){
-        dispatch(login(user));      
-      }else{
-        dispatch(logout(user))
+        dispatch(login(user));  
+        console.log("login");    
       }
       setLoading(false);
     })
