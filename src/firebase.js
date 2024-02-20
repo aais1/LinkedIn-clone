@@ -20,7 +20,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 const auth=getAuth(app);
-setPersistence(auth, browserSessionPersistence);
 const googleProvider = new GoogleAuthProvider();
 const db = getFirestore(app);
 

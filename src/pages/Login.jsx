@@ -17,6 +17,8 @@ const Login = () => {
     const navigate=useNavigate();
     const dispatch=useDispatch();
 
+    document.title="Linkedin | Login"
+
     const handleGoogleLogin=()=>{
         console.log('logging in');
         signInWithPopup(auth, googleProvider)

@@ -77,7 +77,7 @@ const Header = () => {
                 <button onClick={showProfileMenu}>
                   <div className="relative top-0">
                   <div className=" flex flex-col text-xs items-center">
-                    <Avatar url={user?.photoURL} width={24} />
+                    <Avatar url={user?.photoURL} width={27} />
                     <div className="flex">
                       <p>Me</p>
                       <FaCaretDown style={{ fontSize: "1rem", color: "gray" }} />
