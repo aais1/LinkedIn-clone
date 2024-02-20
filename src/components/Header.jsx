@@ -90,8 +90,12 @@ const Header = () => {
                           <p className="px-4 py-2 hover:bg-blue-50 ">Profile</p>
                         </Link>
                         <p className="px-4 py-2 hover:bg-blue-50">Settings</p>
-                        <p className="px-4 py-2 hover:bg-blue-50 "
+                        { user ? <p className="px-4 py-2 hover:bg-blue-50 "
                         onClick={handleSignOut}>Sign Out</p>
+                       : <p className="px-4 py-2 hover:bg-blue-50 "
+                       onClick={()=>{
+                        navigate('/login');
+                       }}>Log In</p>}
                       </div>
                     )
                   }
