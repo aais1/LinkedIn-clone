@@ -8,12 +8,11 @@ import { useDispatch } from 'react-redux';
 import { login } from '../features/authSlice/authSlice';
 import { FcGoogle } from "react-icons/fc";
 
-const Login = ({message}) => {
+const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [username, setUsername] = useState('');
     const [feedback,setFeedback]=useState('')
-    
 
     const navigate=useNavigate();
     const dispatch=useDispatch();
@@ -53,7 +52,6 @@ const Login = ({message}) => {
         <form >
         <div className='min-h-[100vh] flex flex-col justify-center items-center '>
             <div className='p-6 shadow-2xl'>
-                <div className='text-2xl text-red-500 font-bold text-center mb-4 '>{message}</div>
             <div className='flex items-center justify-center gap-x-2 mb-8'>
                 <h1 className='text-4xl  font-bold'>Linked</h1>
                 <img src={logo} alt="" width={50}/>
