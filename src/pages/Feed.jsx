@@ -16,7 +16,6 @@ import { login  } from "../features/authSlice/authSlice";
 
 const Feed = () => {
   const user = useSelector((state) => state.auth.user);
-  console.log(user);
   const dispatch=useDispatch();
   
   const [posts,setPosts]=useState([]);

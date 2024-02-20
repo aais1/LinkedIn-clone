@@ -18,7 +18,7 @@ const LeftSideBar = () => {
          bg-cover  bg-center block h-[100px] w-[100%]' />
         <div className='flex flex-col items-center mb-3'>
             <Avatar url={user?.photoURL} width={50}/>
-            <h3 className='font-semibold mb-2'>Welcome, {user?.displayName} !</h3>
+            <h3 className='font-semibold mb-2'>Welcome, {user?.displayName || "Guest"} !</h3>
             <span className='text-blue-500 text-xs cursor-pointer hover:underline'>Add a photo</span>
         </div>
         </div>
