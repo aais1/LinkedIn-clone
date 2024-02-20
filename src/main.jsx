@@ -13,7 +13,7 @@ import ProtectedRoute from './ProtectedRoute.jsx';
 const router = createBrowserRouter(
   createRoutesFromElements(
       <Route path="/" element={<Layout />}>
-        <Route path="/" element={<Navigate to="/feed" />} />
+        <Route path="/" element={<Navigate to="/login" />} />
         {/* Use the protected route for /feed */}
         <Route
           path="/feed"
