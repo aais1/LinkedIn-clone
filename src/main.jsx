@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import { createBrowserRouter, createRoutesFromElements, Route,RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, createRoutesFromElements, Route,RouterProvider , Navigate } from 'react-router-dom';
 import Layout from './Layout';
 import { Feed, Login, Register } from './pages';
 import { Provider } from 'react-redux';
@@ -13,7 +13,7 @@ import ProtectedRoute from './ProtectedRoute.jsx';
 const router = createBrowserRouter(
   createRoutesFromElements(
       <Route path="/" element={<Layout />}>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Navigate to="/feed" />} />
         {/* Use the protected route for /feed */}
         <Route
           path="/feed"
