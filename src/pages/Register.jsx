@@ -4,6 +4,7 @@ import logo from '/logo.png';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import {auth} from '../firebase';
 import { useDispatch } from 'react-redux';
+import {login} from '../features/authSlice/authSlice'
 
 
 const Register = () => {
@@ -32,8 +33,8 @@ const Register = () => {
         if(allow){
             createUserWithEmailAndPassword(auth,email,password)
             .then((userCredential) => {
-                console.log(userCredential.user);
-                dispatch(login({...userCredential.user,displayName:username}));
+                const user = userCredential.user;
+                dispatch(login({user}));
             })
             .catch((error)=>{
                 setFeedback(error.message)
@@ -46,7 +47,7 @@ const Register = () => {
     <div>
         <form onSubmit={handleRegister}>
         <div className='min-h-[100vh] flex flex-col justify-center items-center '>
-            <div className='p-6 shadow-lg'>
+            <div className='p-6 shadow-2xl'>
             <div className='flex items-center justify-center gap-x-2 mb-8'>
                 <h1 className='text-4xl  font-bold'>Linked</h1>
                 <img src={logo} alt="" width={50}/>

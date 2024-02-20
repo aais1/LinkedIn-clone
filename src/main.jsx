@@ -12,7 +12,13 @@ import { useUser } from './hooks/useUser.js'
 const router= createBrowserRouter(
   createRoutesFromElements(
     <>
-    !useUser() ? <Route path='/' element={ <Login/>}/> : 
+    {/* Getting user from Redux store */}
+    !useUser() ?
+      <>
+      <Route path='/' element={ <Login/>}/>
+      <Route path="/feed" element={<Login message="You Need To Login First"/>}/>
+      </> : 
+
     <Route path="/" element={<Layout/>}  >
       <Route path='/feed' element={ <Feed/>}/>
       <Route path='/login' element={<Login/>}/>
