@@ -24,7 +24,11 @@ const InputField = () => {
                 name:user?.displayName,
                 profileURL:user?.photoURL,
                 email:user?.email,
-                timestamp:serverTimestamp()
+                timestamp:serverTimestamp(),
+                postLikes:0,
+                postComments:0,
+                likedBy:[],
+                comments:[]
             });
             console.log("Document written with ID: ", docRef.id);
             setPost('');
@@ -40,7 +44,7 @@ const InputField = () => {
     }
 
     return (
-        <div className="bg-white rounded-lg shadow-xl space-y-2 p-2">
+        <div className="bg-white rounded-lg shadow-xl space-y-4 p-2">
             <form onSubmit={addPost}>
                 <div className="flex gap-x-4">
                     <Avatar url={user?.photoURL} width={50} />
@@ -53,6 +57,7 @@ const InputField = () => {
                         ref={inputRef}
                     />
                 </div>
+                <button type="submit" className='lg:hidden block relative left-[4.5rem] top-3 text-white px-3 py-1  rounded-full text-sm hover:bg-blue-800 duration-150 bg-blue-500 font-semibold'>Post</button>
             </form>
             <div className="flex space-x-2 items-center justify-evenly">
                 <InputItem title="Media" Icon={IoImageOutline} color="steelblue" />

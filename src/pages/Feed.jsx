@@ -36,6 +36,7 @@ useEffect(() => {
           }))
         );
       });
+      
     } catch (error) {
       console.error("Error fetching posts:", error);
     } finally{
@@ -65,16 +66,18 @@ useEffect(()=>{
               <Discover />
             </div>
 
-            <div className="flex-1 space-y-6 ">
+            <div className="flex-1">
               <InputField />
               <hr />
+            <div className="flex flex-col space-y-4 mt-4">
               {!loading ? (
-                posts && posts.map(({ id, data: { content, name, profileURL, email, timestamp } }) => (
-                  <Post key={id} content={content} name={name} profileURL={profileURL} email={email} timestamp={timestamp} />
+                posts && posts.map(({ id, data: { content, name, profileURL, email, timestamp ,postLikes,postComments,comments} }) => (
+                  <Post key={id} id={id} content={content} name={name} profileURL={profileURL} email={email} timestamp={timestamp} postLikes={postLikes} postComments={postComments} comments={comments} />
                 ))
               ) : (
                 <Loader/>
               )}
+              </div>
             </div>
             <div className="flex-none">
               <RightSideBar />
