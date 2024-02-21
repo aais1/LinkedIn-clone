@@ -11,7 +11,7 @@ import {db} from '../firebase';
 import { updateDoc , doc, arrayRemove } from 'firebase/firestore';
 import { arrayUnion } from 'firebase/firestore';
 
-const Post = ({id,content,name,email,profileURL,timestamp,postLikes,postComments,comments,likedBy}) => {
+const Post = ({id,content,name,uid,profileURL,timestamp,comments,likedBy}) => {
 
   const user=useSelector(state=>state.auth.user);
   const [showMore, setShowMore] = React.useState(false);
@@ -22,9 +22,11 @@ const Post = ({id,content,name,email,profileURL,timestamp,postLikes,postComments
   const [likes, setLikes] = React.useState(likedBy.length);
 
   //checking if the current user has liked this post or not
-  const [liked,setLiked]=React.useState(!likedBy.every((like)=>like.Email!==user.email));
+  const [liked,setLiked]=React.useState(!likedBy.every((like)=>like.uid!==user.uid));
+
   const [comnts,setComnts]=React.useState(comments);
-  const [numOfComments, setnumOfComments] = React.useState(postComments);
+  //no of comnts
+  const [numOfComments, setnumOfComments] = React.useState(comments.length);
   const [loading,setLoading]=React.useState(false);
 
   React.useEffect(() => {
@@ -38,8 +40,7 @@ const Post = ({id,content,name,email,profileURL,timestamp,postLikes,postComments
     const docRef = doc(db, 'posts', id);
     try {
       await updateDoc(docRef, {
-        postLikes: likes+1,
-        likedBy: arrayUnion({Email,photoURL,displayName})
+        likedBy: arrayUnion({uid,photoURL,displayName})
       });
       setLikes((likes) => likes + 1);
       setLiked(true);
@@ -52,8 +53,7 @@ const Post = ({id,content,name,email,profileURL,timestamp,postLikes,postComments
     const docRef = doc(db, 'posts', id);
     try {
       await updateDoc(docRef, {
-        postLikes: likes-1,
-        likedBy: arrayRemove({Email,photoURL,displayName})
+        likedBy: arrayRemove({uid,photoURL,displayName})
       });
       setLikes((likes) => likes - 1);
       setLiked(false);
@@ -68,8 +68,7 @@ const Post = ({id,content,name,email,profileURL,timestamp,postLikes,postComments
     const docRef=doc(db,"posts",id)
     try{
       await updateDoc(docRef,{
-        postComments:numOfComments+1,
-        comments:arrayUnion({comment,photoURL,displayName})
+        comments:arrayUnion({comment,photoURL,displayName,uid})
       })
       setComment('')
       setnumOfComments((prevnumOfComnts)=>prevnumOfComnts+1);

@@ -21,10 +21,8 @@ const InputField = () => {
           content: post,
           name: user?.displayName,
           profileURL: user?.photoURL,
-          email: user?.email,
+          uid: user?.uid,
           timestamp: serverTimestamp(),
-          postLikes: 0,
-          postComments: 0,
           likedBy: [],
           comments: [],
         });

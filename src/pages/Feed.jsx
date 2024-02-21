@@ -71,8 +71,8 @@ useEffect(()=>{
               <hr />
             <div className="flex flex-col space-y-4 mt-4">
               {!loading ? (
-                posts && posts.map(({ id, data: { content, name, profileURL, email, timestamp ,postLikes,postComments,comments,likedBy} }) => (
-                  <Post key={id} id={id} content={content} name={name} profileURL={profileURL} email={email} timestamp={timestamp} postLikes={postLikes} postComments={postComments} comments={comments} likedBy={likedBy} />
+                posts && posts.map(({ id, data: { content, name, profileURL, uid, timestamp ,postLikes,postComments,comments,likedBy} }) => (
+                  <Post key={id} id={id} content={content} name={name} profileURL={profileURL} uid={uid} timestamp={timestamp}  postComments={postComments} comments={comments} likedBy={likedBy} />
                 ))
               ) : (
                 <Loader/>
