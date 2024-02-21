@@ -11,16 +11,18 @@ import {db} from '../firebase';
 import { updateDoc , doc, arrayRemove } from 'firebase/firestore';
 import { arrayUnion } from 'firebase/firestore';
 
-const Post = ({id,content,name,email,profileURL,timestamp,postLikes,postComments,comments}) => {
+const Post = ({id,content,name,email,profileURL,timestamp,postLikes,postComments,comments,likedBy}) => {
 
-  
-  console.log("rereder");
-
+  const user=useSelector(state=>state.auth.user);
   const [showMore, setShowMore] = React.useState(false);
   const [comment, setComment] = React.useState('');
   const [showComment, setShowComment] = React.useState(false);
-  const [likes, setLikes] = React.useState(postLikes);
-  const [liked,setLiked]=React.useState(null);
+
+  //setting the number of likes
+  const [likes, setLikes] = React.useState(likedBy.length);
+
+  //checking if the current user has liked this post or not
+  const [liked,setLiked]=React.useState(!likedBy.every((like)=>like.Email!==user.email));
   const [comnts,setComnts]=React.useState(comments);
   const [numOfComments, setnumOfComments] = React.useState(postComments);
   const [loading,setLoading]=React.useState(false);
@@ -29,7 +31,7 @@ const Post = ({id,content,name,email,profileURL,timestamp,postLikes,postComments
     setComnts(comments);
   }, [comments]);
 
-  const user=useSelector(state=>state.auth.user);
+
   const {email:Email,photoURL,displayName}=user;
 
   const updateLikes = async () => {
