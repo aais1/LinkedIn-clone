@@ -34,13 +34,13 @@ const Post = ({id,content,name,uid,profileURL,timestamp,comments,likedBy}) => {
   }, [comments]);
 
 
-  const {email:Email,photoURL,displayName}=user;
+  const {Uid,photoURL,displayName}=user;
 
   const updateLikes = async () => {
     const docRef = doc(db, 'posts', id);
     try {
       await updateDoc(docRef, {
-        likedBy: arrayUnion({uid,photoURL,displayName})
+        likedBy: arrayUnion({Uid,photoURL,displayName})
       });
       setLikes((likes) => likes + 1);
       setLiked(true);
@@ -53,7 +53,7 @@ const Post = ({id,content,name,uid,profileURL,timestamp,comments,likedBy}) => {
     const docRef = doc(db, 'posts', id);
     try {
       await updateDoc(docRef, {
-        likedBy: arrayRemove({uid,photoURL,displayName})
+        likedBy: arrayRemove({Uid,photoURL,displayName})
       });
       setLikes((likes) => likes - 1);
       setLiked(false);
@@ -68,7 +68,7 @@ const Post = ({id,content,name,uid,profileURL,timestamp,comments,likedBy}) => {
     const docRef=doc(db,"posts",id)
     try{
       await updateDoc(docRef,{
-        comments:arrayUnion({comment,photoURL,displayName,uid})
+        comments:arrayUnion({comment,photoURL,displayName,Uid})
       })
       setComment('')
       setnumOfComments((prevnumOfComnts)=>prevnumOfComnts+1);
