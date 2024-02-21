@@ -83,7 +83,7 @@ const Post = ({id,content,name,email,profileURL,timestamp,postLikes,postComments
   };
 
   return (
-    <div className=' bg-white rounded-lg  space-y-2 px-2 shadow-lg pt-2'>
+    <div className=' bg-white rounded-lg  space-y-2 px-2 shadow-xl pt-2 mb-4'>
     <div className='flex items-center justify-between gap-x-4'>
         <div className='flex items-center gap-x-4'>
       <Avatar url={profileURL} width={50}/>
@@ -148,7 +148,7 @@ const Post = ({id,content,name,email,profileURL,timestamp,postLikes,postComments
     </div>
     </div>
   { showComment &&
-  <div>
+  <div className=''>
     {/* Comment Section */}
     { comments.length > 0 &&
   <div className='flex flex-col gap-y-2 p-2 text-sm'>
@@ -171,7 +171,8 @@ const Post = ({id,content,name,email,profileURL,timestamp,postLikes,postComments
    <div className='p-2 flex'>
       <Avatar width={40} url={user.photoURL} />
       <input type="text"
-      className='flex-1 ml-2 border rounded-full bg-white p-2'
+      className={`${loading ? `text-xs flex-1 text-gray-500 cursor-not-allowed`:``}flex-1 ml-2 border rounded-full bg-white p-2`}
+      disabled={loading}
       placeholder='Enter a comment'
       value={loading ? 'Sending' : comment}
       onChange={(e)=>{
