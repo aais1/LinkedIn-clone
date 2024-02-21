@@ -5,10 +5,9 @@ import Avatar from "./Avatar";
 import HeaderItem from "./HeaderItem";
 import Discover from "./Discover";
 import Post from "./Post";
-import InputItem from "./InputItem";
 import InputField from './InputField'
 import Loader from './Loader'
 
 
 
-export {Header,LeftSideBar,RightSideBar,Avatar,HeaderItem,Discover,Post,InputItem,InputField,Loader}
+export {Header,LeftSideBar,RightSideBar,Avatar,HeaderItem,Discover,Post,InputField,Loader}
