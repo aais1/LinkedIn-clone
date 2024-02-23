@@ -35,7 +35,7 @@ const Header = () => {
     <>
       {!notAllowedRoutes ? (
         <div className="sticky top-0 bg-white z-50 border-b">
-          <div className="w-[95vw] md:w-[80vw] mx-auto">
+          <div className="w-[95vw] px-6 md:w-[80vw] mx-auto">
             <div className="py-2 flex justify-between gap-x-2">
               <div className="flex h-[40px] items-center">
                 <Link to="/feed">
@@ -86,7 +86,7 @@ const Header = () => {
                   </div>
                   {
                     profileMenu && (
-                      <div className="absolute -right-10 bg-white w-[110px] border shadow-xl p-2 rounded-md gap-y-1 text-sm ">
+                      <div className="absolute -right-6 md:-right-10 bg-white w-[110px] border shadow-xl p-2 rounded-md gap-y-1 text-sm ">
                         <Link to="/profile">
                           <p className="px-4 py-2 hover:bg-blue-50 ">Profile</p>
                         </Link>
