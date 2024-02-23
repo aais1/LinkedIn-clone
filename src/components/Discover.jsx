@@ -1,9 +1,8 @@
-import React from 'react'
 import { FaPlus } from "react-icons/fa";
 
 const Discover = () => {
   return (
-    <div className='rounded-md bg-white flex flex-col items-center border shadow-lg mt-4 w-[230px]'>
+    <div className='hidden rounded-md bg-white md:flex flex-col items-center border shadow-lg mt-4 w-[230px]'>
     <div className='py-4 w-[100%] px-6 border-b '>
             <div className='text-xs flex flex-col gap-y-4'>
             <p className='text-blue-500 font-bold hover:underline cursor-pointer'>Discover more</p>

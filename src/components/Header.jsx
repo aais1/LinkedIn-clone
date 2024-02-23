@@ -35,14 +35,14 @@ const Header = () => {
     <>
       {!notAllowedRoutes ? (
         <div className="sticky top-0 bg-white z-50 border-b">
-          <div className="w-[80vw] mx-auto">
+          <div className="w-[95vw] md:w-[80vw] mx-auto">
             <div className="py-2 flex justify-between gap-x-2">
               <div className="flex h-[40px] items-center">
                 <Link to="/feed">
                   <img src="logo.png" alt="logo" width={38} />
                 </Link>
                 <div
-                  className="flex items-center bg-slate-100 gap-x-2 px-4 rounded-md group text-black
+                  className=" hidden md:flex items-center bg-slate-100 gap-x-2 px-4 rounded-md group text-black
              focus:outline-black h-[35px] w-[320px]"
                 >
                   <HiMagnifyingGlass style={{ fontSize: "1.2rem" }} />
@@ -55,7 +55,7 @@ const Header = () => {
                 </div>
               </div>
 
-              <div className="flex gap-x-8">
+              <div className="hidden lg:flex gap-x-2 md:gap-x-8">
                 <HeaderItem Icon={FaHome} color="gray" title="Home" />
                 <HeaderItem
                   Icon={BsFillPeopleFill}
@@ -72,12 +72,13 @@ const Header = () => {
                   color="gray"
                   title="Messaging"
                 />
+                
                 <HeaderItem Icon={FaBell} color="gray" title="Notifications" />
-
+                </div>
                 <button onClick={showProfileMenu}>
                   <div className="relative top-0">
                   <div className=" flex flex-col text-xs items-center">
-                    <Avatar url={user?.photoURL} width={27} />
+                    <Avatar url={user?.photoURL} width={30} />
                     <div className="flex">
                       <p>Me</p>
                       <FaCaretDown style={{ fontSize: "1rem", color: "gray" }} />
@@ -101,7 +102,6 @@ const Header = () => {
                   }
                   </div>
                 </button>
-              </div>
             </div>
           </div>
         </div>

@@ -60,7 +60,7 @@ useEffect(()=>{
   return (
 <>
         <div className="bg-zinc-50 pt-6">
-          <div className="w-[80vw] mx-auto flex gap-x-6">
+          <div className="w-[95vw] md:w-[80vw] mx-auto flex gap-x-0 md:gap-x-6">
             <div className="flex-none ">
               <LeftSideBar />
               <Discover />

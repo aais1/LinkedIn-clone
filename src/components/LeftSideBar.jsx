@@ -9,7 +9,7 @@ const LeftSideBar = () => {
     const user=useSelector(state=>state.auth.user);
 
   return (
-    <div className='rounded-md bg-white flex flex-col items-center border shadow-lg w-[230px]'>
+    <div className='hidden rounded-md bg-white md:flex flex-col items-center border shadow-lg w-[230px]'>
         <div className='w-[100%] border-b'>
         <img src={sidebarBg}
          alt="bg"

@@ -8,10 +8,10 @@ const HeaderItem = ({Icon,title,color}) => {
         onMouseLeave={() => setIsHovered(false)}>
     <div className='flex flex-col text-xs items-center'>
         <div className="">
-        <Icon style={{fontSize:'1.5rem',color: isHovered ? 'black' : color}}
+        <Icon style={{fontSize:'1.2rem',color: isHovered ? 'black' : color}}
          />
         </div>
-        <p className='group-hover:text-black font-semibold text-gray-500'>{title}</p>
+        <p className='group-hover:text-black text-[10px] md:text-sm font-semibold text-gray-500'>{title}</p>
     </div>
     </div>
   )

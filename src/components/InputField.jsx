@@ -40,7 +40,7 @@ const InputField = () => {
   };
 
   return (
-    <div className="bg-white rounded-lg shadow-xl space-y-4 p-2">
+    <div className="bg-white rounded-lg shadow-xl space-y-1 md:space-y-4 p-2">
       <form onSubmit={addPost}>
         <div className="flex gap-x-4">
           <Avatar url={user?.photoURL} width={50} />
@@ -60,20 +60,20 @@ const InputField = () => {
           Post
         </button>
       </form>
-      <div className="flex space-x-2 items-center justify-evenly">
+      <div className="flex space-x-2 text-xs md:text-sm lg:text-lg items-center justify-evenly">
         <label htmlFor="ip-field">
-        <input type="file" id="ip-field"  accept="image/png" className="hidden" />
+        <input type="file" id="ip-field"  accept="image/png, image/jpeg" className="hidden" />
         <div className="flex items-center gap-x-1 cursor-pointer hover:bg-slate-300 p-3 rounded-md">
-          <IoImageOutline style={{ color: "steelblue", fontSize: "1.7rem" }} />
+          <IoImageOutline style={{ color: "steelblue", fontSize: "1.4rem" }} />
           <h1>Media</h1>
         </div>
         </label>
         <div className="flex items-center gap-x-1 cursor-pointer hover:bg-slate-300 p-3 rounded-md">
-          <SlCalender style={{ color: "brown", fontSize: "1.7rem" }} />
+          <SlCalender style={{ color: "brown", fontSize: "1.4rem" }} />
           <h1>Event</h1>
         </div>
         <div className="flex items-center gap-x-1 cursor-pointer hover:bg-slate-300 p-3 rounded-md">
-          <SlCalender style={{ color: "red", fontSize: "1.7rem" }} />
+          <SlCalender style={{ color: "red", fontSize: "1.4rem" }} />
           <h1>Write Article</h1>
         </div>
       </div>

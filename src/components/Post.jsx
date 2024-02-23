@@ -116,36 +116,36 @@ const Post = ({id,content,name,uid,profileURL,timestamp,comments,likedBy}) => {
 
         
       { !liked?
-        <div className="flex items-center gap-x-1 hover:cursor-pointer hover:text-black duration-75  px-2 py-3 my-1 hover:bg-blue-50 rounded-md  "
+        <div className="flex items-center gap-x-1 hover:cursor-pointer hover:text-black duration-75  px-1 md:px-2 py-1 md:py-3 my-1 hover:bg-blue-50 rounded-md  "
         onClick={updateLikes}>
-        <FaRegThumbsUp style={{fontSize:'1.5rem'}}/>
-        Like
+        <FaRegThumbsUp style={{fontSize:'1.rem'}}/>
+        <span>Like</span>
         </div>
         :
-        <div className="flex items-center gap-x-1 text-blue-500 hover:cursor-pointer duration-75  px-2 py-3 my-1  rounded-md  "
+        <div className="flex items-center gap-x-1 text-blue-500 hover:cursor-pointer duration-75  px-1 md:px-2 py-1 md:py-3 my-1  rounded-md  "
         onClick={decreaseLikes}>
-        <FaRegThumbsUp style={{fontSize:'1.5rem'}}/>
-        Like
+        <FaRegThumbsUp style={{fontSize:'1.rem'}}/>
+        <span>Like</span>
         </div>
         
         }
 
-    <div className="flex items-center gap-x-1 hover:cursor-pointer hover:text-black duration-150   px-2 py-3 my-1 hover:bg-blue-50 rounded-md "
+    <div className="flex items-center gap-x-1 hover:cursor-pointer hover:text-black duration-150   px-1 md:px-2 py-1 md:py-3 my-1 hover:bg-blue-50 rounded-md "
         onClick={()=>{
           setShowComment(!showComment)
         }}>
     <BiCommentDots 
-    style={{fontSize:'1.5rem'}}
+    style={{fontSize:'1.rem'}}
      />
-    Comments
+    <span>Comments</span>
     </div>
-    <div className="flex items-center gap-x-1 hover:cursor-pointer hover:text-black duration-150  px-2 py-3 my-1 hover:bg-blue-50 rounded-md "> 
-    <FaArrowsTurnToDots style={{fontSize:'1.5rem'}}/>
-    Repost
+    <div className="flex items-center gap-x-1 hover:cursor-pointer hover:text-black duration-150  px-1 md:px-2 py-1 md:py-3 my-1 hover:bg-blue-50 rounded-md "> 
+    <FaArrowsTurnToDots style={{fontSize:'1.rem'}}/>
+    <span>Repost</span>
     </div>
-    <div className="flex items-center gap-x-1 hover:cursor-pointer hover:text-black duration-150  px-2 py-3 my-1 hover:bg-blue-50 rounded-md ">
-    <LuSend style={{fontSize:'1.5rem'}}/>
-    Share
+    <div className="flex items-center gap-x-1 hover:cursor-pointer hover:text-black duration-150  px-1 md:px-2 py-1 md:py-3 my-1 hover:bg-blue-50 rounded-md ">
+    <LuSend style={{fontSize:'1.rem'}}/>
+    <span>Share</span>
     </div>
     </div>
   { showComment &&
