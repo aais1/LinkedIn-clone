@@ -21,6 +21,8 @@ const Feed = () => {
   const [posts,setPosts]=useState([]);
   const [loading,setLoading]=useState(false);
 
+  document.title = "LinkedIn | Feed";
+
 
 useEffect(() => {
   setLoading(true);
