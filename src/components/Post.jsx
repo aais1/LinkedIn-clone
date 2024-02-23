@@ -34,13 +34,13 @@ const Post = ({id,content,name,uid,profileURL,timestamp,comments,likedBy}) => {
   }, [comments]);
 
 
-  const {Uid,photoURL,displayName}=user;
+  const {photoURL,displayName}=user;
 
   const updateLikes = async () => {
     const docRef = doc(db, 'posts', id);
     try {
       await updateDoc(docRef, {
-        likedBy: arrayUnion({Uid,photoURL,displayName})
+        likedBy: arrayUnion({ uid: user.uid, photoURL: user.photoURL, displayName: user.displayName })
       });
       setLikes((likes) => likes + 1);
       setLiked(true);
