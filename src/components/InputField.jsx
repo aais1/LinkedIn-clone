@@ -55,7 +55,7 @@ const InputField = () => {
         </div>
         <button
           type="submit"
-          className="lg:hidden block relative left-[4.5rem] top-3 text-white px-3 py-1  rounded-full text-sm hover:bg-blue-800 duration-150 bg-blue-500 font-semibold"
+          className="lg:hidden block relative left-[4.5rem] top-3 text-white px-3 py-1  rounded-full text-sm hover:bg-blue-800 duration-150 mb-6 bg-blue-500 font-semibold"
         >
           Post
         </button>
