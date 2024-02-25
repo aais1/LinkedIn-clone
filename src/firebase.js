@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { setPersistence ,browserSessionPersistence,getAuth , GoogleAuthProvider } from "firebase/auth";
+import { getAuth , GoogleAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 // TODO: Add SDKs for Firebase products that you want to use
@@ -8,7 +8,7 @@ import { getFirestore } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBMOuhmSx1m9ymgBsiZ3ow1NjPb7KrbPkI",
+  apiKey: import.meta.env.VITE_API_KEY,
   authDomain: "linkedin-48058.firebaseapp.com",
   projectId: "linkedin-48058",
   storageBucket: "linkedin-48058.appspot.com",
