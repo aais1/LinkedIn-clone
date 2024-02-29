@@ -1,4 +1,3 @@
-import React from 'react'
 import { HiOutlineInformationCircle } from "react-icons/hi";
 
 const RightSideBar = () => {
