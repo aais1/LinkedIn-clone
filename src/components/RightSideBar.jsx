@@ -1,5 +1,6 @@
 import { HiOutlineInformationCircle } from "react-icons/hi";
 
+
 const RightSideBar = () => {
   return (
     <div className='hidden rounded-md bg-white lg:flex flex-col items-center border shadow-lg w-[100%]'>

@@ -7,7 +7,9 @@ import Discover from "./Discover";
 import Post from "./Post";
 import InputField from './InputField'
 import Loader from './Loader'
+import JobsRightBar from "./JobsRightBar";
+import JobsLeftBar from "./JobsRightBar";
+import JobsRightLinks from "./JobsRightLinks";
+import RecentJobSearches from "./RecentJobSearches";
 
-
-
-export {Header,LeftSideBar,RightSideBar,Avatar,HeaderItem,Discover,Post,InputField,Loader}
+export {Header,LeftSideBar,RightSideBar,Avatar,HeaderItem,Discover,Post,InputField,Loader,JobsRightBar,JobsLeftBar,JobsRightLinks,RecentJobSearches}
