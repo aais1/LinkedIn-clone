@@ -1,6 +1,7 @@
 import { FaAngleDown } from "react-icons/fa";
 
 const RecentJobSearches = () => {
+  
   return (
     <div className='bg-white  text-black rounded-md shadow-xl '>
         <div className='flex font-semibold justify-between p-4'>
