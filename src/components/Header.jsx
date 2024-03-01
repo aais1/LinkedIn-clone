@@ -14,7 +14,7 @@ import {auth} from '../firebase'
 
 const Header = () => {
   const location = useLocation();
-  const restrictedRoutes = ["/login", "/register"];
+  const restrictedRoutes = ["/login", "/register" , "/list-job"];
   const notAllowedRoutes = restrictedRoutes.some((loc) =>
     location.pathname.includes(loc)
   );

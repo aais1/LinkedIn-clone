@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import { createBrowserRouter, createRoutesFromElements, Route,RouterProvider , Navigate } from 'react-router-dom';
 import Layout from './Layout';
-import { Feed, Login, Register , Jobs } from './pages';
+import { Feed, Login, Register , Jobs , NewJob } from './pages';
 import { Provider } from 'react-redux';
 import store from './features/store/store.js';
 import ProtectedRoute from './ProtectedRoute.jsx';
@@ -29,6 +29,15 @@ const router = createBrowserRouter(
       element={
       <ProtectedRoute>
         <Jobs/>
+      </ProtectedRoute>
+      }
+  />
+
+    <Route
+      path="/list-job"
+      element={
+      <ProtectedRoute>
+        <NewJob/>
       </ProtectedRoute>
       }
   />

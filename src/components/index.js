@@ -11,5 +11,7 @@ import JobsRightBar from "./JobsRightBar";
 import JobsLeftBar from "./JobsRightBar";
 import JobsRightLinks from "./JobsRightLinks";
 import RecentJobSearches from "./RecentJobSearches";
+import TopApplicant from "./TopApplicant";
+import Recommend from "./Recommend";
 
-export {Header,LeftSideBar,RightSideBar,Avatar,HeaderItem,Discover,Post,InputField,Loader,JobsRightBar,JobsLeftBar,JobsRightLinks,RecentJobSearches}
+export {Header,LeftSideBar,RightSideBar,Avatar,HeaderItem,Discover,Post,InputField,Loader,JobsRightBar,JobsLeftBar,JobsRightLinks,RecentJobSearches,TopApplicant,Recommend}
