@@ -40,7 +40,7 @@ const Post = ({id,content,name,uid,profileURL,timestamp,comments,likedBy}) => {
     const docRef = doc(db, 'posts', id);
     try {
       await updateDoc(docRef, {
-        likedBy: arrayUnion({ uid: user.uid, photoURL: user.photoURL, displayName: user.displayName })
+        likedBy: arrayUnion({ uid: user?.uid, photoURL: user?.photoURL, displayName: user?.displayName })
       });
       setLikes((likes) => likes + 1);
       setLiked(true);
@@ -53,10 +53,10 @@ const Post = ({id,content,name,uid,profileURL,timestamp,comments,likedBy}) => {
     const docRef = doc(db, 'posts', id);
     try {
       await updateDoc(docRef, {
-        likedBy: arrayRemove({Uid,photoURL,displayName})
+        likedBy: arrayRemove({uid: user?.uid, photoURL: user?.photoURL,displayName: user?.displayName})
       });
       setLikes((likes) => likes - 1);
-      setLiked(false);
+      setLiked(false); 
 
     } catch (error) {
       console.error('Error updating document:', error);
@@ -68,7 +68,7 @@ const Post = ({id,content,name,uid,profileURL,timestamp,comments,likedBy}) => {
     const docRef=doc(db,"posts",id)
     try{
       await updateDoc(docRef,{
-        comments:arrayUnion({comment,photoURL,displayName,Uid})
+        comments:arrayUnion({uid: user?.uid, photoURL: user?.photoURL,displayName: user?.displayName,comment})
       })
       setComment('')
       setnumOfComments((prevnumOfComnts)=>prevnumOfComnts+1);
