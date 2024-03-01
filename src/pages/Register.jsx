@@ -53,7 +53,7 @@ const Register = () => {
                 <h1 className='text-4xl  font-bold'>Linked</h1>
                 <img src={logo} alt="" width={50}/>
             </div>
-            <div className='flex flex-col gap-y-5 w-[400px] '>
+            <div className='flex flex-col gap-y-5 w-[75vw] md:w-[500px] '>
                  <input type="text"
                  disabled
                  placeholder='Enter your Username' 

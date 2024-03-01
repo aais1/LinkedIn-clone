@@ -51,13 +51,13 @@ const Login = () => {
     <div>
         <form >
         <div className='min-h-[100vh] flex flex-col justify-center items-center '>
-            <div className='p-6 shadow-2xl'>
+            <div className='p-6 shadow-2xl '>
                 <div className='text-red-500 text-xs text-center font-semibold w-[100%] mb-2'>*Please Use Google to Log in to the App*</div>
             <div className='flex items-center justify-center gap-x-2 mb-8'>
                 <h1 className='text-4xl  font-bold'>Linked</h1>
                 <img src={logo} alt="" width={50}/>
             </div>
-            <div className='flex flex-col gap-y-5 w-[400px] '>
+            <div className='flex flex-col gap-y-5 w-[75vw] md:w-[500px] '>
                  <input type="text"
                  placeholder='Enter your Username' 
                  className='border p-2'
