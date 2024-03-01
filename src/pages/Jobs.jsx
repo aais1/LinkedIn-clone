@@ -7,7 +7,7 @@ const Jobs = () => {
 
   return (
     <div className="bg-zinc-50 pt-4">
-    <div className="w-[95vw] md:w-[85vw] mx-auto min-h-screen flex gap-x-2 md:gap-x-6 text-black">
+    <div className="w-[95vw] md:w-[85vw] mx-auto min-h-screen flex gap-x-0 md:gap-x-3 lg:gap-x-6 text-black">
             <div className="flex-none">
             <JobsLeftBar/>
             </div>
@@ -18,7 +18,7 @@ const Jobs = () => {
             <Recommend/>
               </div>
             </div>
-            <div className="flex-none">
+            <div className="flex-none hidden md:block">
             <JobsRightBar/>
             </div>
     </div>
