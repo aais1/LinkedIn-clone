@@ -48,14 +48,14 @@ const Jobs = () => {
 
 return (
     <div className="bg-zinc-50">
-        <div className="w-[90vw]  mx-auto">
+        <div className="w-screen md:w-[90vw]  mx-auto">
             <div className="flex text-black">
-                <div className="w-[50%] ">
+                <div className="w-[100%] md:w-[50%] ">
                     <div className="bg-blue-600">
                         <div className="flex justify-between gap-y-1 py-2 mx-5 text-white ">
                             <div>
-                                <h1 className="text-md">Jobs in Pakistan</h1>
-                                <span className="text-sm">5000 Results</span>
+                                <h1 className="text-md font-semibold">Jobs</h1>
+                                <span className="text-sm">Results :</span>
                             </div>
                             <div className="flex gap-x-2 items-center">
                                 <span className="text-xs">Set Alert</span>
@@ -67,7 +67,7 @@ return (
                         </div>
                     </div>
 
-                    <div className="overflow-y-scroll min-h-[72.4vh] max-h-[72.5vh]">
+                    <div className="md:overflow-y-scroll min-h-[72.4vh] max-h-[72.5vh]">
 
                     {
                         jobs ? jobs.map((job) => {
@@ -96,7 +96,7 @@ return (
                     </div>
                     </div>
                         
-                <div className="bg-white w-[50%] max-h-[81vh] overflow-y-scroll">
+                <div className="bg-white w-[50%] hidden md:block max-h-[81vh] overflow-y-scroll">
                     <JobDetail/>
                 </div>
             </div>

@@ -14,7 +14,7 @@ const Recommend = () => {
                 <h1 className="font-semibold text-xl ">Want More Jobs</h1>
                 <h2 className='text-md text-gray-500'>Click here to continue searching over 20 million jobs on LinkedIn</h2>
                 <Link to="/jobs/search"
-        className="lg:flex w-[30%] hover:underline hidden p-2 outline outline-1 items-center justify-center gap-x-2 outline-blue-500 font-semibold text-blue-500 hover:border-blue-500 border-[1px] border-transparent duration-150 rounded-full hover:bg-blue-50">
+        className="flex w-[30%] hover:underline  p-2 outline outline-1 items-center justify-center gap-x-2 outline-blue-500 font-semibold text-blue-500 hover:border-blue-500 border-[1px] border-transparent duration-150 rounded-full hover:bg-blue-50">
           Search jobs
         </Link>
             </div>

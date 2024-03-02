@@ -39,7 +39,7 @@ const Header = () => {
       {!notAllowedRoutes ? (
         <div className="sticky top-0 bg-white z-50 border-b">
           <div className={`w-[95vw] px-6 ${!onJobSearchpage ? `md:w-[80vw]` : `md:w-[90vw]`} mx-auto`}>
-            <div className="py-2 flex justify-between gap-x-2">
+            <div className="py-2 flex justify-between items-center gap-x-2">
               <div className="flex h-[40px] items-center">
                 <Link to="/feed">
                   <img src="logo.png" alt="logo" width={38} />
@@ -85,7 +85,7 @@ const Header = () => {
                 )}
               </div>
 
-              <div className="hidden lg:flex gap-x-2 md:gap-x-8">
+              <div className=" flex gap-x-4 md:gap-x-8">
                 <HeaderItem Icon={FaHome} color="gray" title="Home" />
                 <HeaderItem
                   Icon={BsFillPeopleFill}
@@ -108,8 +108,8 @@ const Header = () => {
               <button onClick={showProfileMenu}>
                 <div className="relative top-0">
                   <div className=" flex flex-col text-xs items-center">
-                    <Avatar url={user?.photoURL} width={30} />
-                    <div className="flex">
+                    <Avatar url={user?.photoURL} width={35} />
+                    <div className="hidden md:flex">
                       <p>Me</p>
                       <FaCaretDown
                         style={{ fontSize: "1rem", color: "gray" }}

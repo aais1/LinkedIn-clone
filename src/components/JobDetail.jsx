@@ -1,6 +1,7 @@
 import React from 'react'
 
 const JobDetail = () => {
+    // {  title, company, location, type, level, years, country, skills, posted, description}
   return (
     <div className="p-4">
                     <h1 className="text-xl font-semibold">Manager Digital Strategy & Transformation</h1>
