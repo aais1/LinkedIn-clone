@@ -27,11 +27,11 @@ To run the project locally, follow these steps:
    git clone https://github.com/your-username/linkedin-clone.git
 
 2. Navigate to directory and install the dependencies
-  ```bash
-  cd linkedin-clone
-  npm install
-  ````
+   ```bash
+   cd linkedin-clone
+   npm install
+   ````
 
 3. Start the development server
-  ```bash
+  ````bash
   npm run dev
