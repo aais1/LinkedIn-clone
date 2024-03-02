@@ -24,7 +24,7 @@ To run the project locally, follow these steps:
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/linkedin-clone.git
+   git clone https://github.com/aais1/Linkedin-clone
 
 2. Navigate to directory and install the dependencies
    ```bash
