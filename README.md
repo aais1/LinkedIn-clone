@@ -13,13 +13,9 @@ This is an ongoing project to create a LinkedIn clone using React for the fronte
 
 ## Features (To be implemented)
 
-- [ ] User Authentication
 - [ ] Profile Creation and Editing
-- [ ] News Feed
 - [ ] Messaging System
 - [ ] Job Listings
-- [ ] Notifications
-- [ ] Responsive Design
 
 ## Getting Started
 
