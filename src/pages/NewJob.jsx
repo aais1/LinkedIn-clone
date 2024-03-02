@@ -77,8 +77,8 @@ const NewJob = () => {
             <h1 className='text-3xl font-semibold'>Posting a job just became easier</h1>
             <div className='flex text-md flex-col gap-y-4'>
             <span>✔ Draft your job description in one click using skills insights from LinkedIn’s member base.</span>
-            <span>✔ Draft your job description in one click using skills insights from LinkedIn’s member base.</span>
-            <span>✔ Draft your job description in one click using skills insights from LinkedIn’s member base.</span>
+            <span>✔ Target qualified applicants for your role using recommended must-have qualifications.</span>
+            <span>✔ Post a job for free, then decide if you’d like to pay to promote it.</span>
             </div>
           </div>
         </div>
