@@ -10,49 +10,79 @@ import Avatar from "./Avatar";
 import { FaCaretDown } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import {auth} from '../firebase'
+import { auth } from "../firebase";
 
 const Header = () => {
   const location = useLocation();
-  const restrictedRoutes = ["/login", "/register" , "/list-job"];
+  const restrictedRoutes = ["/login", "/register", "/list-job"];
   const notAllowedRoutes = restrictedRoutes.some((loc) =>
     location.pathname.includes(loc)
   );
+
+  const onJobSearchpage=location.pathname.includes("/jobs/search")
+
   const user = useSelector((state) => state.auth.user);
   const [profileMenu, setProfileMenu] = React.useState(false);
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   const showProfileMenu = () => {
     setProfileMenu(!profileMenu);
-  }
+  };
 
   //todo handle signout
-  const handleSignOut=()=>{
+  const handleSignOut = () => {
     auth.signOut();
-    navigate('/login');
-  }
+    navigate("/login");
+  };
 
   return (
     <>
       {!notAllowedRoutes ? (
         <div className="sticky top-0 bg-white z-50 border-b">
-          <div className="w-[95vw] px-6 md:w-[80vw] mx-auto">
+          <div className={`w-[95vw] px-6 ${!onJobSearchpage ? `md:w-[80vw]` : `md:w-[90vw]`} mx-auto`}>
             <div className="py-2 flex justify-between gap-x-2">
               <div className="flex h-[40px] items-center">
                 <Link to="/feed">
                   <img src="logo.png" alt="logo" width={38} />
                 </Link>
-                <div
-                  className=" hidden md:flex items-center bg-slate-100 gap-x-2 px-4 rounded-md group text-black
+                {location.pathname !== "/jobs/search" && (
+                  <div
+                    className=" hidden md:flex items-center bg-slate-100 gap-x-2 px-4 rounded-md group text-black
              focus:outline-black h-[35px] w-[320px]"
-                >
-                  <HiMagnifyingGlass style={{ fontSize: "1.2rem" }} />
-                  <input
-                    type="text"
-                    className="p-1 bg-transparent text-sm focus:border-none focus:outline-none text-black
+                  >
+                    <HiMagnifyingGlass style={{ fontSize: "1.2rem" }} />
+                    <input
+                      type="text"
+                      className="p-1 bg-transparent text-sm focus:border-none focus:outline-none text-black
              placeholder:text-black "
-                    placeholder="Search"
-                  />
-                </div>
+                      placeholder="Search"
+                    />
+                  </div>
+                )}
+
+                {location.pathname === "/jobs/search" && (
+                  <div className="flex gap-x-1">
+                    <div
+                      className=" hidden md:flex items-center bg-slate-100 gap-x-2 px-4 rounded-md group text-black
+                focus:outline-black h-[35px] w-[320px]"
+                    >
+                      <HiMagnifyingGlass style={{ fontSize: "1.2rem" }} />
+                      <input
+                        type="text"
+                        className="p-1 bg-transparent text-sm focus:border-none focus:outline-none text-black
+                placeholder:text-black "
+                        placeholder="Search by title,skill or company"
+                      />
+                    </div>
+                    <div>
+                      <input
+                        type="text"
+                        className="p-1 bg-slate-100 px-4 h-[35px] text-sm focus:border-none focus:outline-none text-black
+                placeholder:text-black rounded-md "
+                        placeholder="Location"
+                      />
+                    </div>
+                  </div>
+                )}
               </div>
 
               <div className="hidden lg:flex gap-x-2 md:gap-x-8">
@@ -72,36 +102,47 @@ const Header = () => {
                   color="gray"
                   title="Messaging"
                 />
-                
+
                 <HeaderItem Icon={FaBell} color="gray" title="Notifications" />
-                </div>
-                <button onClick={showProfileMenu}>
-                  <div className="relative top-0">
+              </div>
+              <button onClick={showProfileMenu}>
+                <div className="relative top-0">
                   <div className=" flex flex-col text-xs items-center">
                     <Avatar url={user?.photoURL} width={30} />
                     <div className="flex">
                       <p>Me</p>
-                      <FaCaretDown style={{ fontSize: "1rem", color: "gray" }} />
+                      <FaCaretDown
+                        style={{ fontSize: "1rem", color: "gray" }}
+                      />
                     </div>
                   </div>
-                  {
-                    profileMenu && (
-                      <div className="absolute -right-6 md:-right-10 bg-white w-[110px] border shadow-xl p-2 rounded-md gap-y-1 text-sm ">
-                        <Link to="/profile">
-                          <p className="px-4 py-2 hover:bg-blue-50 ">Profile</p>
-                        </Link>
-                        <p className="px-4 py-2 hover:bg-blue-50">Settings</p>
-                        { user ? <p className="px-4 py-2 hover:bg-blue-50 "
-                        onClick={handleSignOut}>Sign Out</p>
-                       : <p className="px-4 py-2 hover:bg-blue-50 "
-                       onClick={()=>{
-                        navigate('/login');
-                       }}>Log In</p>}
-                      </div>
-                    )
-                  }
-                  </div>
-                </button>
+                  {profileMenu && (
+                    <div className="absolute -right-6 md:-right-10 bg-white w-[110px] border shadow-xl p-2 rounded-md gap-y-1 text-sm ">
+                      <Link to="/profile">
+                        <p className="px-4 py-2 hover:bg-blue-50 ">Profile</p>
+                      </Link>
+                      <p className="px-4 py-2 hover:bg-blue-50">Settings</p>
+                      {user ? (
+                        <p
+                          className="px-4 py-2 hover:bg-blue-50 "
+                          onClick={handleSignOut}
+                        >
+                          Sign Out
+                        </p>
+                      ) : (
+                        <p
+                          className="px-4 py-2 hover:bg-blue-50 "
+                          onClick={() => {
+                            navigate("/login");
+                          }}
+                        >
+                          Log In
+                        </p>
+                      )}
+                    </div>
+                  )}
+                </div>
+              </button>
             </div>
           </div>
         </div>
