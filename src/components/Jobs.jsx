@@ -76,12 +76,12 @@ return (
                             return (
                                 <div key={job.id} className="bg-white border-y cursor-pointer group"
                                 onClick={()=>handleClick(job)}>
-                                    <div className="flex items-start justify-between mx-1 py-3">
-                                        <img src={job.data.image} alt="logo" className="w-[80px] h-[60px] object-contain"/>
+                                    <div className="flex items-start gap-x-3 justify-between mx-1 py-3">
+                                        <img src={job.data.postedBy.photoURL} alt="logo" className="w-[60px] h-[60px]  rounded-full"/>
                                         <div className="flex-1 text-sm">
-                                            <h1 className="text-blue-500 font-semibold text-lg cursor-pointer group-hover:underline">{job.data.jobDetail.companyName}</h1>
-                                            <p className="font-semibold">{job.data.jobDetail.role}</p>
-                                            <p>{job.data.jobDetail.jobLocation}</p>
+                                            <h1 className="text-blue-500 font-semibold text-lg cursor-pointer group-hover:underline">{job.data.company}</h1>
+                                            <p className="font-semibold">{job.data.title}</p>
+                                            <p>{job.data.location}</p>
                                         </div>
                                         <div>
                                             <RxCross2 className="hover:bg-gray-100 h-[30px] w-[30px] p-1 rounded-full cursor-pointer font-black"

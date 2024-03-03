@@ -1,71 +1,32 @@
 import linkedin from '../assets/linkedin.gif'
 import jobLinkedin7 from '../assets/jobLinkedin7.svg'
 import ceo from '../assets/ceo.png'
-import { Footer } from '../components'
+import { Footer , NewJobForm } from '../components'
+import { useEffect } from 'react'
+import { onAuthStateChanged } from 'firebase/auth'
+import { auth } from '../firebase'
+import { login } from '../features/authSlice/authSlice'
+import { useDispatch } from 'react-redux'
+
 
 const NewJob = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        dispatch(login(user));
+        console.log("login");
+      }
+      
+    });
+  }, [dispatch]);
+
   return (
     <div className="bg-zinc-50">
-      <div className="flex justify-center items-center py-10 bg-gray-800">
+      <div className="flex justify-center items-center py-4 bg-gray-800">
           <div className=" text-black bg-white p-4 w-[80vw] md:w-[30vw] rounded-lg shadow-2xl">
-            <div className="mb-5">
-            <h1 className="text-xl font-semibold">Post a job for free</h1>
-            <p className="text-sm">Increase the quality of your hire</p>
-            </div>
-            <form action="" className="flex flex-col text-sm gap-y-2">
-              <div className="flex flex-col gap-y-2">
-              <label className="text-xs text-gray-500" htmlFor="">Job title</label>
-              <input type="text"
-              placeholder="Add the title you are hiring for"
-              className="border-[1.5px] duration-150 cursor-pointer border-transparent outline outline-1 hover:border-black outline-black  p-1 rounded-md "/>
-              </div>
-              <div className="flex flex-col gap-y-2">
-               
-              <label className="text-xs text-gray-500" htmlFor="">Company</label>
-              <input type="text"
-              placeholder="Company" 
-              className="border-[1.5px] duration-150 cursor-pointer border-transparent outline outline-1 hover:border-black outline-black  p-1 rounded-md "/>
-              </div>
-              <div className="flex flex-col gap-y-2">
-              <label className="text-xs text-gray-500" htmlFor="">Workplace type</label>
-              <select className="border border-black rounded-md  p-1" name="" id="">
-                <option value="On-sites">On-sites</option>
-                <option value="Hybrid">Hybrid</option>
-                <option value="Remote">Remote</option>
-              </select>
-              </div>
-              <div className="flex flex-col gap-y-2">
-              <label className="text-xs text-gray-500" htmlFor="">Job location</label>
-              <input type="text"
-              placeholder="Location" 
-              className="border-[1.5px] duration-150 cursor-pointer border-transparent outline outline-1 hover:border-black outline-black  p-1 rounded-md "/>
-              </div>
-              <div className="flex flex-col gap-y-2">
-              <label className="text-xs text-gray-500" htmlFor="">Workplace type</label>
-              <select name="" id="" className="border p-1 border-black rounded-sm" >
-                <option value="Full Time">Full Time</option>
-                <option value="Part Time">Part Time</option>
-                <option value="Contract">Contract</option>
-              </select>
-              </div>
-
-              <div className="flex flex-col gap-y-4 mt-4">
-              <button className="rounded-full bg-blue-600 hover:bg-blue-800 text-white text-xl font-bold py-3">
-                Write With AI
-              </button>
-              <button className="rounded-full text-blue-600 outline outline-1 border-[1.5px] border-transparent hover:border-blue-600 hover:bg-blue-50 duration-150 outline-blue-600 font-semibold text-xl py-3">
-                Write on my own
-              </button>
-              <div className="flex flex-col">
-              <span className="text-sm text-gray-500">If you want help with your job description, we will use the information above and AI to suggest one.</span>
-              <div className="hover:underline text-center text-blue-500 cursor-pointer font-semibold">Learn More</div>
-              </div>
-              <div className="flex gap-x-1">
-                <span className="text-sm text-gray-500">Limits may apply to free job posts.</span>
-                <div className="hover:underline text-center cursor-pointer text-blue-500 font-semibold">View our policy</div>
-              </div>
-              </div>
-            </form>
+            <NewJobForm/>
           </div>
       </div>
 
