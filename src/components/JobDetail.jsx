@@ -1,15 +1,27 @@
-import React from 'react'
+import { useState } from 'react';
+import { useSelector } from 'react-redux'
 
 const JobDetail = () => {
     // {  title, company, location, type, level, years, country, skills, posted, description}
+    const job=useSelector(store=>store.job.job)
+
+    if (!job) {
+        return <h1></h1>;
+    }else
+        {const {data}=job;
+        const {jobDetail,postedBy}=data;
+        const {companyName , description,jobLocation,role}=jobDetail;
+        const {companyEmployees , companySkills , postedOn}=postedBy;
+
+        
   return (
     <div className="p-4">
-                    <h1 className="text-xl font-semibold">Manager Digital Strategy & Transformation</h1>
-                    <span className="text-xs text-gray-500">HBL Microfinance Bank LTD · Islāmābād, Pakistan · 2 weeks ago · Over 100 applicants</span>
+                    <h1 className="text-xl font-semibold">{role}</h1>
+                    <span className="text-xs text-gray-500">{companyName}· {jobLocation} · 2 weeks ago · Over 100 applicants</span>
                     
                     <div className="flex flex-col mt-4 gap-y-4 text-sm text-gray-500">
                             <span >On-site  Full-time  Mid-Senior level</span>
-                            <span >10,001+ employees · Banking</span>
+                            <span >{companyEmployees}+ employees · {companySkills}</span>
                             <span >Skills · Banking</span>
                             <span >See how you compare to over 100 other applicants. Try Premium for PKR0</span>
                     </div>
@@ -37,75 +49,16 @@ const JobDetail = () => {
                             <div className="flex flex-col gap-y-4">
                                 <div>
                             <p className="text-sm font-semibold">Digital Transformation Strategy Execution</p>
-                            <ul className="text-sm list-disc list-inside">
-                                    <li>
-                                    Execute and monitor the digital transformation journey roadmap across the organization
-                                    </li>
-                                    <li>
-                                    Bring industry best practices and innovative solutions as per business need
-                                    </li>
-                                    <li>
-                                    Identify emerging industry trends and technologies to stay at the forefront of digital financial services.
-                                    </li>
-                                    <li>
-                                    Prepare visibility and regular reporting via dashboards and regular update sessions
-                                    </li>
-                                    <li>
-                                    Explore and bring innovative solutions best fit for the organization need
-                                    </li>
-                            </ul>
+                                <div>{description}</div>
                             </div>
-
-
-                            <div>
-                            <p className="text-sm font-semibold">Digital Transformation Strategy Execution</p>
-                            <ul className="text-sm list-disc list-inside">
-                                    <li>
-                                    Execute and monitor the digital transformation journey roadmap across the organization
-                                    </li>
-                                    <li>
-                                    Bring industry best practices and innovative solutions as per business need
-                                    </li>
-                                    <li>
-                                    Identify emerging industry trends and technologies to stay at the forefront of digital financial services.
-                                    </li>
-                                    <li>
-                                    Prepare visibility and regular reporting via dashboards and regular update sessions
-                                    </li>
-                                    <li>
-                                    Explore and bring innovative solutions best fit for the organization need
-                                    </li>
-                            </ul>
                             </div>
-
-                            <div>
-                            <p className="text-sm font-semibold">Digital Transformation Strategy Execution</p>
-                            <ul className="text-sm list-disc list-inside">
-                                    <li>
-                                    Execute and monitor the digital transformation journey roadmap across the organization
-                                    </li>
-                                    <li>
-                                    Bring industry best practices and innovative solutions as per business need
-                                    </li>
-                                    <li>
-                                    Identify emerging industry trends and technologies to stay at the forefront of digital financial services.
-                                    </li>
-                                    <li>
-                                    Prepare visibility and regular reporting via dashboards and regular update sessions
-                                    </li>
-                                    <li>
-                                    Explore and bring innovative solutions best fit for the organization need
-                                    </li>
-                            </ul>
-                            </div>
-
-                            </div>
-                            <div className="mt-6 font-semibold text-gray-500">Posted on 1 March 2023</div>
+                            <div className="mt-6 font-semibold text-gray-500">Posted on {postedOn.toDate().toDateString()}</div>
                             </div>
                     </div>
 
                 </div>
   )
+}
 }
 
 export default JobDetail

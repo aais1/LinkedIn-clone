@@ -16,5 +16,6 @@ import Recommend from "./Recommend";
 import Jobs from "./Jobs";
 import JobDetail from "./JobDetail";
 import Footer from "./Footer";
+import PostSkeleton from "./PostSkeleton";
 
-export {Header,LeftSideBar,RightSideBar,Avatar,HeaderItem,Discover,Post,InputField,Loader,JobsRightBar,JobsLeftBar,JobsRightLinks,RecentJobSearches,TopApplicant,Recommend,Jobs,JobDetail,Footer}
+export {Header,LeftSideBar,RightSideBar,Avatar,HeaderItem,Discover,Post,InputField,Loader,JobsRightBar,JobsLeftBar,JobsRightLinks,RecentJobSearches,TopApplicant,Recommend,Jobs,JobDetail,Footer,PostSkeleton}

@@ -11,6 +11,9 @@ const jobSlice = createSlice({
     reducers: {
         setJob: (state, {payload}) => {
             state.job = payload;
+            console.log('====================================');
+            console.log(payload);
+            console.log('====================================');
           },
         removeJob: (state) => {
         state.job = null;

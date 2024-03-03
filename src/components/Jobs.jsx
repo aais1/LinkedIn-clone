@@ -3,18 +3,21 @@ import {  db } from '../firebase'
 import { useEffect , useState } from "react";
 import { query , orderBy , collection , onSnapshot } from "firebase/firestore";
 import JobDetail from "./JobDetail";
+import { useDispatch } from "react-redux";
+import { setJob } from "../features/jobSlice/jobSlice";
 
 const Jobs = () => {
 
     const [jobs,setJobs]=useState([]);
     const [loading,setLoading]=useState(false);
+    const dispatch=useDispatch();
 
     const filterJobs=id=>{
         setJobs((jobs)=>jobs.filter((job)=>job.id !== id))  
       }
 
-      const handleClick=()=>{
-        console.log("Hello World");
+      const handleClick=job=>{
+        dispatch(setJob(job))
       }
 
 
@@ -45,7 +48,6 @@ const Jobs = () => {
       }, []);
 
 
-
 return (
     <div className="bg-zinc-50">
         <div className="w-screen md:w-[90vw]  mx-auto">
@@ -73,7 +75,7 @@ return (
                         jobs ? jobs.map((job) => {
                             return (
                                 <div key={job.id} className="bg-white border-y cursor-pointer group"
-                                onClick={handleClick}>
+                                onClick={()=>handleClick(job)}>
                                     <div className="flex items-start justify-between mx-1 py-3">
                                         <img src={job.data.image} alt="logo" className="w-[80px] h-[60px] object-contain"/>
                                         <div className="flex-1 text-sm">

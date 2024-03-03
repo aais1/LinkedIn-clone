@@ -13,10 +13,10 @@ const RecentJobSearches = () => {
   return (
     <div className={`bg-white text-black rounded-md shadow-xl`}>
       <div className={` ${!showMore ? `max-h-[260px]` : `max-h-[600px]`} transition-all duration-500 overflow-hidden `}>
-        <div className='flex font-semibold justify-between px-4 py-2'>
-            <h1>Recent job searches</h1>
+        <div className='flex font-semibold justify-between p-1 md:px-4 md:py-2'>
+            <h1 className="text-sm md:text-md p-1">Recent job searches</h1>
             <button
-            className='text-gray-500 hover:bg-blue-50 p-1 rounded-md'>Clear</button>
+            className='text-gray-500 hover:bg-blue-50 p-1 rounded-md text-sm'>Clear</button>
         </div>
         <div className='flex border-b px-4 py-2 flex-col gap-y-2 text-xs '>
           <div className='flex item-center gap-x-1'>
@@ -109,22 +109,6 @@ const RecentJobSearches = () => {
           
         </div>
 
-        <div className='flex border-b p-4 flex-col gap-y-2 text-xs '>
-          <div className='flex item-center gap-x-1'>
-          <p className='font-semibold text-sm'>next js </p>
-          <span> . </span>
-          <p className='text-green-500 font-semibold'>3 new</p>
-          </div>
-          <div className='flex item-center gap-x-1'>
-            <p>Pakistan</p>
-            <span> . </span>
-            <p>Entry Level</p>
-            <span> . </span>
-            <p>On-Site</p>
-            <span> . </span>
-            <p>Remote</p>
-          </div>
-        </div>
         </div>
         </div>
         

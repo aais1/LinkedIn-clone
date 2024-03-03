@@ -48,6 +48,7 @@ const NewJob = () => {
                 <option value="Contract">Contract</option>
               </select>
               </div>
+
               <div className="flex flex-col gap-y-4 mt-4">
               <button className="rounded-full bg-blue-600 hover:bg-blue-800 text-white text-xl font-bold py-3">
                 Write With AI
@@ -101,16 +102,16 @@ const NewJob = () => {
           <div className='flex flex-col gap-y-7'>
           <h1 className='text-[1.7rem] md:text-[2.2rem]'>You control how much you want to spend</h1>
           <div className='flex gap-x-2'>
-            <div className='flex flex-col gap-y-2 justify-center items-center border rounded-xl p-1 md:p-8'>
+            <div className='flex flex-col gap-y-2 justify-center items-center border rounded-xl shadow-xl p-1 md:p-8'>
                 <h1 className='text-md md:text-xl font-semibold'>Choose your budget</h1>
                 <p className='md:text-md text-sm text-center '>You can adjust your spending or close your job at any time.</p>
             </div>
-            <div className='flex flex-col gap-y-2 justify-center items-center border rounded-xl p-1 md:p-8'>
-                <h1 className='text-md md:text-xl font-semibold'>Receive more applicants</h1>
+            <div className='flex flex-col gap-y-2 justify-center items-center border rounded-xl shadow-xl p-1 md:p-8'>
+                <h1 className='text-md md:text-xl font-semibold '>Receive more applicants</h1>
                 <p className='md:text-md text-sm text-center '>Pay to promote your job post to relevant candidates across LinkedIn.</p>
             </div>
-            <div className='flex flex-col gap-y-2 justify-center items-center border rounded-xl p-1 md:p-8'>
-                <h1 className='text-md md:text-xl font-semibold'>Only pay for results</h1>
+            <div className='flex flex-col gap-y-2 justify-center items-center border rounded-xl shadow-xl p-1 md:p-8'>
+                <h1 className='text-md md:text-xl font-semibold '>Only pay for results</h1>
                 <p className='md:text-md text-sm text-center '>Your budget is only used when someone clicks on your job post.</p>
             </div>
           </div>
