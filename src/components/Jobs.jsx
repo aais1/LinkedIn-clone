@@ -1,17 +1,18 @@
 import { RxCross2 } from "react-icons/rx";
 import {  db } from '../firebase'
 import { useEffect , useState } from "react";
-import { query , orderBy , collection , onSnapshot } from "firebase/firestore";
+import { query , collection , onSnapshot } from "firebase/firestore";
 import JobDetail from "./JobDetail";
 import { useDispatch } from "react-redux";
 import { setJob } from "../features/jobSlice/jobSlice";
+import JobSkeleton from "./JobSkeleton";
 
 const Jobs = () => {
 
     const [jobs,setJobs]=useState([]);
-    const [loading,setLoading]=useState(false);
+    const [loading,setLoading]=useState(true);
     const dispatch=useDispatch();
-
+    
     const filterJobs=id=>{
         setJobs((jobs)=>jobs.filter((job)=>job.id !== id))  
       }
@@ -22,7 +23,6 @@ const Jobs = () => {
 
 
     useEffect(() => {
-        setLoading(true);
         const fetchData = async () => {
           try {
             const q = query(collection(db, "jobs"));
@@ -34,17 +34,15 @@ const Jobs = () => {
                   data: doc.data(),
                 }))
               );
+              setLoading(false);
             });
             
           } catch (error) {
             console.error("Error fetching posts:", error);
-          } finally{
-            setLoading(false);
-            console.log('====================================');
-            console.log(jobs);('====================================');
-          }
+          } 
         };
         fetchData();
+        console.log('fetchd');
       }, []);
 
 
@@ -71,8 +69,16 @@ return (
 
                     <div className="md:overflow-y-scroll min-h-[72.4vh] max-h-[72.5vh]">
 
-                    {
-                        jobs ? jobs.map((job) => {
+                    { loading ? 
+                    <div>
+                     <JobSkeleton/> 
+                     <JobSkeleton/> 
+                     <JobSkeleton/> 
+                     <JobSkeleton/> 
+                     <JobSkeleton/> 
+                     <JobSkeleton/>
+                    </div> :
+                        jobs.length> 0 ? jobs.map((job) => {
                             return (
                                 <div key={job.id} className="bg-white border-y cursor-pointer group"
                                 onClick={()=>handleClick(job)}>

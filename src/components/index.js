@@ -18,5 +18,6 @@ import JobDetail from "./JobDetail";
 import Footer from "./Footer";
 import PostSkeleton from "./PostSkeleton";
 import NewJobForm from "./NewJobForm";
+import JobSkeleton from "./JobSkeleton";
 
-export {Header,LeftSideBar,RightSideBar,Avatar,HeaderItem,Discover,Post,InputField,Loader,JobsRightBar,JobsLeftBar,JobsRightLinks,RecentJobSearches,TopApplicant,Recommend,Jobs,JobDetail,Footer,PostSkeleton,NewJobForm}
+export {Header,LeftSideBar,RightSideBar,Avatar,HeaderItem,Discover,Post,InputField,Loader,JobsRightBar,JobsLeftBar,JobsRightLinks,RecentJobSearches,TopApplicant,Recommend,Jobs,JobDetail,Footer,PostSkeleton,NewJobForm,JobSkeleton}

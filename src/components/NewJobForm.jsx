@@ -30,11 +30,12 @@ const NewJobForm = () => {
             type: data.type,
             location: data.location,
             jobType: data.jobType,
+            position:data.position,
             description: data.description,
         }).then(()=>{
             alert("Job posted successfully")
         }).catch((error)=>{
-            alert(error.message)
+           console.log(error.message);
         })
     }
 
@@ -46,8 +47,9 @@ const NewJobForm = () => {
             <p className="text-sm">Increase the quality of your hire</p>
             </div>
         <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col text-sm gap-y-1">
+          <div className='grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-1'>
             <div className="flex flex-col gap-y-1">
-                <label className="text-xs text-gray-500" htmlFor="">Job title</label>
+                <label className="text-xs text-gray-800 font-semibold" htmlFor="">Job title</label>
                 <input
                     type="text"
                     placeholder="Add the title you are hiring for"
@@ -61,7 +63,7 @@ const NewJobForm = () => {
             </div>
               <div className="flex flex-col gap-y-1">
                
-              <label className="text-xs text-gray-500" htmlFor="">Company</label>
+              <label className="text-xs text-gray-800 font-semibold" htmlFor="">Company</label>
               <input type="text"
               placeholder="Company" 
               className="border-[1.5px] duration-150 cursor-pointer border-transparent outline outline-1 hover:border-black outline-black  p-1 rounded-md "
@@ -72,7 +74,7 @@ const NewJobForm = () => {
               }
               </div>
               <div className="flex flex-col gap-y-1">
-              <label className="text-xs text-gray-500" htmlFor="">Workplace type</label>
+              <label className="text-xs text-gray-800 font-semibold" htmlFor="">Workplace type</label>
               <select className="border border-black rounded-md  p-1" name="" id=""
               {...register("type",{required:"true"})}
               aria-invalid={errors.type ? "true" : "false"}>
@@ -86,7 +88,7 @@ const NewJobForm = () => {
                 }
               </div>
               <div className="flex flex-col gap-y-1">
-              <label className="text-xs text-gray-500" htmlFor="">Job location</label>
+              <label className="text-xs text-gray-800 font-semibold" htmlFor="">Job location</label>
               <input type="text"
               placeholder="Location" 
               className="border-[1.5px] duration-150 cursor-pointer border-transparent outline outline-1 hover:border-black outline-black  p-1 rounded-md "
@@ -97,8 +99,8 @@ const NewJobForm = () => {
                 }
               </div>
               <div className="flex flex-col gap-y-1">
-              <label className="text-xs text-gray-500" htmlFor="">Job type</label>
-              <select name="" id="" className="border p-1 border-black rounded-sm"
+              <label className="text-xs text-gray-800 font-semibold" htmlFor="">Job type</label>
+              <select name="" id="" className="border p-1 border-black rounded-md"
               {...register("jobType",{required:"true"})}
               aria-invalid={errors.jobType ? "true" : "false"} >
                 <option value="" disabled selected>Job Type</option>
@@ -111,15 +113,31 @@ const NewJobForm = () => {
                 }
               </div>
 
-              <div className='flex flex-col gap-y-1'>
-              <label className="text-xs text-gray-500" htmlFor="">Job Description</label>
+              <div className="flex flex-col gap-y-1">
+              <label className="text-xs text-gray-800 font-semibold" htmlFor="">Job position</label>
+              <select name="" id="" className="border p-1 border-black rounded-md"
+              {...register("position",{required:"true"})}
+              aria-invalid={errors.position ? "true" : "false"} >
+                <option value="" disabled selected>Job Position</option>
+                <option value="Intern">Intern</option>
+                <option value="Junior">Junior</option>
+                <option value="Mid-level Senior">Mid-level Senior</option>
+                <option value="Senior">Senior</option>
+              </select>
+                {
+                    errors.position?.type==="required" && <p role="alert" className='text-xs text-red-500 font-semibold'>Job position is required</p>
+                }
+              </div>
+
+              </div>
+              <div className='flex flex-col gap-y-1 mt-2'>
+              <label className="text-xs text-gray-800 font-semibold" htmlFor="">Job Description</label>
                 <textarea  
-                {...register("description",{required:"true",minLength:50,maxLength:500})}
+                {...register("description",{required:"true",minLength:50})}
                 aria-invalid={errors.description ? "true" : "false"}
                 placeholder="Add a job description"
-                cols="30" 
-                rows="10"
-                className='w-[100%] border-[1.5px] duration-150 cursor-pointer border-transparent outline outline-1 hover:border-black outline-black  p-1 rounded-md'
+
+                className='w-[100%] min-h-[240px] border-[1.5px] duration-150 cursor-pointer border-transparent outline outline-1 hover:border-black outline-black  p-1 rounded-md'
                 />
                 {
                     errors.description?.type==="required"  && <p role="alert" className='text-xs text-red-500 font-semibold'>Job description is required</p>
@@ -147,7 +165,8 @@ const NewJobForm = () => {
                 <Link to="https://www.linkedin.com/help/linkedin/answer/a1505867"><div className="hover:underline text-center cursor-pointer text-blue-500 font-semibold">View our policy</div></Link>
               </div>
               </div>
-            </form>
+              
+        </form>
     </div>
   )
 }

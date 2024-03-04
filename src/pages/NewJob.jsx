@@ -25,7 +25,7 @@ const NewJob = () => {
   return (
     <div className="bg-zinc-50">
       <div className="flex justify-center items-center py-4 bg-gray-800">
-          <div className=" text-black bg-white p-4 w-[80vw] md:w-[30vw] rounded-lg shadow-2xl">
+          <div className=" text-black bg-white p-4 w-[80vw] md:w-[50vw] rounded-lg shadow-2xl">
             <NewJobForm/>
           </div>
       </div>

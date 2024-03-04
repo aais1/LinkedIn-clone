@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useSelector } from "react-redux";
 
 const JobDetail = () => {
@@ -9,7 +8,7 @@ const JobDetail = () => {
     return <h1></h1>;
   } else {
     const { data } = job;
-    const { company, jobType, location, postedBy, title, type, description } =
+    const { company, jobType, location, postedBy, title, type, description , position } =
       data;
     const { displayName, photoURL, email, timestamp } = postedBy;
     return (
@@ -21,7 +20,7 @@ const JobDetail = () => {
 
         <div className="flex flex-col mt-4 gap-y-4 text-sm text-gray-500">
           <span>
-            {type} {jobType} Mid-Senior level
+            {type} {jobType} {position} level
           </span>
           <span>10,000+ employees · </span>
           <span>Skills · Banking</span>

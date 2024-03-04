@@ -60,7 +60,7 @@ const Header = () => {
                 )}
 
                 {location.pathname === "/jobs/search" && (
-                  <div className="flex gap-x-1">
+                  <div className="hidden md:flex gap-x-1">
                     <div
                       className=" hidden md:flex items-center bg-slate-100 gap-x-2 px-4 rounded-md group text-black
                 focus:outline-black h-[35px] w-[320px]"
