@@ -86,24 +86,27 @@ const Header = () => {
               </div>
 
               <div className=" flex gap-x-2 lg:gap-x-4 ">
-                <HeaderItem Icon={FaHome} color="gray" title="Home" />
+                <HeaderItem Icon={FaHome} color="gray" title="Home" url="/feed" />
                 <HeaderItem
                   Icon={BsFillPeopleFill}
                   color="gray"
                   title="My Network"
+                  url=""
                 />
                 <HeaderItem
                   Icon={BsFillHandbagFill}
                   color="gray"
                   title="Jobs"
+                  url="/jobs"
                 />
                 <HeaderItem
                   Icon={IoChatbubbleEllipses}
                   color="gray"
                   title="Messaging"
+                  url=""
                 />
 
-                <HeaderItem Icon={FaBell} color="gray" title="Notifications" />
+                <HeaderItem Icon={FaBell} color="gray" title="Notifications" url="" />
               </div>
               <button onClick={showProfileMenu}>
                 <div className="relative top-0">

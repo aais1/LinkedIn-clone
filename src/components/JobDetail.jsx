@@ -5,7 +5,7 @@ const JobDetail = () => {
   const job = useSelector((store) => store.job.job);
 
   if (!job) {
-    return <h1></h1>;
+    return <h1 className="text-xl p-4 font-semibold text-gray-500">Select a job to view details</h1>;
   } else {
     const { data } = job;
     const { company, jobType, location, postedBy, title, type, description , position } =

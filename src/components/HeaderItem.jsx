@@ -1,10 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useLocation } from 'react-router-dom'
 
-const HeaderItem = ({Icon,title,color}) => {
+const HeaderItem = ({Icon,title,color,url}) => {
   const [isHovered,setIsHovered]=React.useState(false)
+  const location=useLocation()
   return (
-    <Link to={title.toLowerCase()==="home" ? 'feed' : title.toLowerCase()}>
+    <Link to={url==="" ?  location : url}>
     <div className='group cursor-pointer '
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}>

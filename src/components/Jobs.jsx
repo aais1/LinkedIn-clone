@@ -67,7 +67,7 @@ return (
                         </div>
                     </div>
 
-                    <div className="md:overflow-y-scroll min-h-[72.4vh] max-h-[72.5vh]">
+                    <div className="md:overflow-y-scroll  max-h-[71vh]">
 
                     { loading ? 
                     <div>
