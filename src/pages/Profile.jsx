@@ -1,19 +1,38 @@
 import { useSelector } from "react-redux";
 import sidebarBg from "../assets/sidebarBg.png";
 import { IoIosEye } from "react-icons/io";
-import { useEffect } from "react";
+import { useEffect ,useState } from "react";
 import { useParams } from "react-router-dom";
-import { db } from "../firebase";
+import { auth, db } from "../firebase";
 import { collection, getDoc } from "firebase/firestore";
+import { onAuthStateChanged } from "firebase/auth";
+import { useDispatch } from "react-redux";
+import { login, logout } from "../features/authSlice/authSlice";
+import  Skeleton  from 'react-loading-skeleton'
 
 const Profile = () => {
   const url = window.location.href;
   const id = useParams().id;
   const user = useSelector((state) => state.auth.user);
+  const dispatch = useDispatch();
+  const [loading,setLoading] = useState(false);
 
   useEffect(() => {
-    document.title = `${user.displayName} | Linkedin`;
-  }, []);
+    setLoading(true);
+    onAuthStateChanged(auth, (User) => {
+        if(User){
+            dispatch(login(User))
+            console.log("ssahbjkkkkk");
+            setLoading(false);
+        }else{
+            dispatch(logout(User))
+            setLoading(false);
+        }
+    });
+  }, [dispatch]);
+
+
+
   return (
     <div className="bg-zinc-100 min-h-screen">
       <div className="w-[80vw] pt-6 mx-auto">
@@ -25,13 +44,18 @@ const Profile = () => {
                 alt="bg"
                 className="object-cover w-[100%] h-[180px]"
               />
-              <img
-                src={user.photoURL}
+              { !loading ? <img
+                src={user?.photoURL}
                 className="rounded-full w-32 -mt-20 ml-4"
                 alt="pfp"
-              />
+              /> : <div className="w-32 rounded-full -mt-20 ml-4"><Skeleton style={{height:"120px",borderRadius:"100%"}}/></div>}
               <div className="p-2 space-y-4">
-                <h1 className="font-semibold text-xl ">{user.displayName}</h1>
+                { loading ?
+                <div className="w-28">
+                  <Skeleton count={1} />
+                </div>
+                :
+                <h1 className="font-semibold text-xl ">{user?.displayName}</h1>}
                 <div className="flex gap-x-2">
                   <button className="bg-blue-500 text-white font-semibold rounded-full px-2  hover:bg-blue-800">
                     Open to
