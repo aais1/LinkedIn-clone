@@ -7,6 +7,8 @@ import { signInWithPopup } from 'firebase/auth';
 import { useDispatch } from 'react-redux';
 import { login } from '../features/authSlice/authSlice';
 import { FcGoogle } from "react-icons/fc";
+import { db } from '../firebase';
+import { addDoc , collection } from 'firebase/firestore';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -19,12 +21,20 @@ const Login = () => {
 
     document.title="Linkedin | Login"
 
+
+
     const handleGoogleLogin=()=>{
         console.log('logging in');
         signInWithPopup(auth, googleProvider)
             .then((result) => {
                 const user = result.user;
                 dispatch(login(user));
+                addDoc(collection(db,'users'),{
+                    email:user.email,
+                    displayName:user.displayName,
+                    photoURL:user.photoURL,
+                    uid:user.uid
+                })
                 navigate('/feed');
             })
             .catch((error) => {

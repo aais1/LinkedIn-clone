@@ -10,7 +10,7 @@ import {
   Navigate,
 } from "react-router-dom";
 import Layout from "./Layout";
-import { Feed, Login, Register, Jobs, NewJob, SearchJobs } from "./pages";
+import { Feed, Login, Register, Jobs, NewJob, SearchJobs , Profile } from "./pages";
 import { Provider } from "react-redux";
 import store from "./features/store/store.js";
 import ProtectedRoute from "./ProtectedRoute.jsx";
@@ -34,6 +34,15 @@ const router = createBrowserRouter(
         element={
           <ProtectedRoute>
             <Jobs />
+          </ProtectedRoute>
+        }
+      ></Route>
+
+        <Route
+        path="/profile/:id"
+        element={
+          <ProtectedRoute>
+            <Profile />
           </ProtectedRoute>
         }
       ></Route>

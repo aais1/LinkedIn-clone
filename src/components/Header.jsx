@@ -11,6 +11,7 @@ import { FaCaretDown } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { auth } from "../firebase";
+import { MdFilterFrames } from "react-icons/md";
 
 const Header = () => {
   const location = useLocation();
@@ -85,7 +86,7 @@ const Header = () => {
                 )}
               </div>
 
-              <div className=" flex gap-x-2 lg:gap-x-4 ">
+              <div className=" flex gap-x-3 lg:gap-x-4 ">
                 <HeaderItem Icon={FaHome} color="gray" title="Home" url="/feed" />
                 <HeaderItem
                   Icon={BsFillPeopleFill}
@@ -107,6 +108,12 @@ const Header = () => {
                 />
 
                 <HeaderItem Icon={FaBell} color="gray" title="Notifications" url="" />
+                <Link to="/list-job">
+                  <div className="flex text-md items-center hover:text-black text-gray-500 font-semibold flex-col">
+                  <MdFilterFrames style={{fontSize:"1.5rem"}}/>
+                  <div className="hidden md:block">Post a Job</div>
+                  </div>
+                </Link>
               </div>
               <button onClick={showProfileMenu}>
                 <div className="relative top-0">
@@ -121,7 +128,7 @@ const Header = () => {
                   </div>
                   {profileMenu && (
                     <div className="absolute -right-6 md:-right-10 bg-white w-[110px] border shadow-xl p-2 rounded-md gap-y-1 text-sm ">
-                      <Link to="/profile">
+                      <Link to={`/profile/${user.uid}`}>
                         <p className="px-4 py-2 hover:bg-blue-50 ">Profile</p>
                       </Link>
                       <p className="px-4 py-2 hover:bg-blue-50">Settings</p>
