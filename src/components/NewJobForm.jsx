@@ -13,6 +13,7 @@ const NewJobForm = () => {
         register,
         handleSubmit,
         watch,
+        reset,
         formState: { errors },
       } = useForm()
 
@@ -34,6 +35,7 @@ const NewJobForm = () => {
             description: data.description,
         }).then(()=>{
             alert("Job posted successfully")
+            reset()
         }).catch((error)=>{
            console.log(error.message);
         })
@@ -150,7 +152,7 @@ const NewJobForm = () => {
               <div className="flex flex-col gap-y-2 mt-2">
               <button className="rounded-full text-blue-600 outline outline-1 border-[1.5px] border-transparent hover:border-blue-600 hover:bg-blue-50 duration-150 outline-blue-600 font-semibold text-xl py-3"
               type='submit'>
-                Write on my own
+                Submit
               </button>
               <button className="rounded-full bg-blue-600 hover:bg-blue-800 text-white text-xl font-bold py-3"
               >

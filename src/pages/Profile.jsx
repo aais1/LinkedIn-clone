@@ -81,7 +81,7 @@ const Profile = () => {
             </div>
           </div>
 
-          <div className="flex-[0.25] ">
+          <div className="flex-none w-60 ">
             <div className="bg-white rounded-md">
               <div className="flex flex-col p-2 ">
                 <div className="border-b-2 pb-2">
@@ -101,7 +101,7 @@ const Profile = () => {
                     </h1>
                     <button>🎈</button>
                   </div>
-                  <p className="text-xs break-all">{url}</p>
+                  <p className="text-xs break-all ">{url}</p>
                 </div>
               </div>
             </div>
