@@ -2,14 +2,14 @@
 import { initializeApp } from "firebase/app";
 import { getAuth , GoogleAuthProvider } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_API_KEY,
-  authDomain: "linkedin-48058.firebaseapp.com",
-  projectId: "linkedin-48058",
-  storageBucket: "linkedin-48058.appspot.com",
-  messagingSenderId: "136547178845",
-  appId: "1:136547178845:web:0bdd382f4c9711247330b4"
+  authDomain: "global-terrain-419715.firebaseapp.com",
+  projectId: "global-terrain-419715",
+  storageBucket: "global-terrain-419715.appspot.com",
+  messagingSenderId: "129417134389",
+  appId: "1:129417134389:web:14a84f5637ff087c814c7c",
+  measurementId: "G-BJTQ4WSYL1"
 };
 
 // Initialize Firebase
